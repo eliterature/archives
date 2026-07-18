@@ -1,0 +1,4 @@
+# Original repo tracked *.mp4 and *.webm via Git LFS.
+# LFS filters removed for this archive; the real video binaries are mirrored to
+# this repository's GitHub Release (tag: elo2026-exhibition-media). The files under
+# public/videos/mp4/ in this source tree are the original Git LFS pointer stubs.

@@ -1,0 +1,736 @@
+/* ── Design tokens ──────────────────────────────────────────────── */
+
+:root {
+    /* Core palette (ELO 2026 refresh) */
+    --elc-pink: #f9609c;        /* page background */
+    --elc-cyan: #1ec1f0;        /* card header background */
+    --elc-indigo: #57669b;      /* primary accent */
+    --elc-green: #36a969;       /* secondary accent */
+    --elc-coral: #fd7b56;       /* provided coral */
+
+    /* Semantic aliases (kept as --elc-teal* / --elc-orange so existing rules follow) */
+    --elc-teal: #57669b;        /* indigo primary */
+    --elc-teal-dark: #3f4c78;   /* darker indigo for text on light backgrounds */
+    --elc-teal-light: #aab3d6;  /* lighter indigo for text on dark backgrounds */
+    --elc-orange: #e05f33;      /* darker coral for accessible hover / contrast */
+    --elc-header-bg: #424242;
+    --elc-nav-bg: #e8e8e8;
+    --elc-page-bg: #f9609c;     /* pink page background */
+    --textcolor_light: #333333;
+    --backgroundcream_light: #eeeeee;
+    --workbackground_light: #e0e0e0;
+    --containerborder_light: #bdbdbd;
+    --containerbackground_light: #fff;
+    --navgrouptext_hover_light: #e05f33;
+    --title_shadow_light: rgba(0, 0, 0, 0.32);
+    --contrast_color_light: #e05f33;
+    --contrast2_color_light: #57669b;
+    --current_work_foreground_light: white;
+    --current_work_background_light: rgba(0, 0, 0, .5);
+    --keyword_tag_selected_light: #c9d0ea;
+    --feature_image_border_light: #bdbdbd;
+    --header_light: #57669b;
+    --selected_work_borderleft_light: #57669b;
+    --contrast1_color_light: #57669b;
+    --contrast3_color_light: #aab3d6;
+    --contrast4_color_light: #aab3d6;
+    --nav_link_color_light: #3f4c78;
+    --header_background_light: #424242;
+    --begin_link_border_light: #c24e28;
+    --navgroup_sep_light: #bdbdbd;
+    --begin_link_color: white;
+}
+
+[data-theme="dark"] {
+    --textcolor_light: #3a3a3a;
+    --backgroundcream_light: #e5e5e5;
+    --workbackground_light: #cecece;
+    --containerborder_light: rgb(148, 148, 148);
+    --containerbackground_light: #fff;
+    --navgrouptext_hover_light: rgb(0, 0, 0);
+    --title_shadow_light: rgba(0, 0, 0, 0.32);
+    --contrast_color_light: #FFFFFF;
+    --contrast1_color_light: #000000;
+    --contrast2_color_light: #000000;
+    --contrast4_color_light: #000000;
+    --current_work_foreground_light: white;
+    --current_work_background_light: rgba(0, 0, 0, .4);
+    --keyword_tag_selected_light: lightblue;
+    --feature_image_border_light: #eee;
+    --header_light: #000000;
+    --selected_work_borderleft_light: #00000;
+    --contrast3_color_light: #FFFFFF;
+    --nav_link_color_light: #000000;
+    --header_background_light: #686868;
+    --begin_link_border_light: #b86583;
+    --navgroup_sep_light: #888888;
+    --begin_link_color: black;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Exo:wght@300&family=Open+Sans&display=swap");
+
+/* ── Base typography & page chrome ──────────────────────────────── */
+
+body {
+    font-family: "Open Sans", "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: var(--textcolor_light);
+    background-color: var(--elc-page-bg);
+    -webkit-font-smoothing: antialiased;
+}
+
+#main {
+    background-color: var(--elc-page-bg);
+}
+
+h3 {
+    font-family: "Trebuchet MS", sans-serif;
+    font-weight: normal;
+    padding-left: 20px;
+}
+
+hr {
+    width: 75%;
+    margin: auto;
+    border: 2px solid #c1c1c1;
+    margin-bottom: 2%;
+}
+
+a {
+    color: var(--nav_link_color_light);
+    text-decoration: underline;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* ── Card container (used by RichTextBlock-rendered content) ───── */
+
+.elcContainer {
+    background-color: var(--containerbackground_light);
+    border-radius: 10px;
+    border: 1px solid var(--containerborder_light);
+    width: 80%;
+    margin: auto;
+    margin-bottom: 15px;
+    border-color: #d5d5d5;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.elcContainer h4 {
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding: 0px 3%;
+}
+
+.elcContainer p {
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding: 0px 3%;
+    font-size: 1rem;
+}
+
+.elcContainer li {
+    list-style-type: square;
+    margin-left: 5%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    font-size: 1rem;
+}
+
+.elcContainer blockquote {
+    margin-inline: 6% 3%;
+    padding-inline-start: 1.25em;
+    border-inline-start: 3px solid var(--elc-teal, #d5d5d5);
+    color: var(--containertext_light, inherit);
+    font-style: italic;
+}
+
+.elcContainer blockquote p {
+    padding-inline: 0;
+}
+
+/* ── Card headers (Bootstrap Card on work detail pages) ─────────── */
+
+.card-header {
+    background-color: var(--elc-cyan);
+}
+
+/* ── About page sections ────────────────────────────────────────── */
+
+.aboutSubHeader {
+    margin-bottom: 10px;
+    font-size: 1.75em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #ffffff;
+    background: var(--elc-green);
+    padding: 16px 10px 9px 25px;
+    border-radius: 10px 10px 0 0;
+    font-family: "Open Sans", sans-serif;
+    letter-spacing: 0.04em;
+}
+
+.about > a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.aboutOrganizersGrid {
+    display: flex;
+}
+
+.aboutOrganizersColumn {
+    flex: 1;
+}
+
+.aboutOrganizersColumn--left {
+    padding-right: 10px;
+}
+
+.aboutOrganizersColumn--right {
+    padding-left: 10px;
+}
+
+/* ── Begin/access link (work access modal) ──────────────────────── */
+
+a.beginLink {
+    color: var(--begin_link_color);
+    margin: auto;
+    margin-bottom: 20px;
+    display: block;
+    background-color: var(--contrast_color_light);
+    text-align: center;
+    line-height: 42px;
+    font-size: 1em;
+    text-decoration: none;
+    border: 1px solid var(--begin_link_border_light);
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+/* ── Navigation (legacy .navGroup component) ────────────────────── */
+
+span.navLink:hover a {
+    color: var(--contrast_color_light);
+    text-decoration: none;
+}
+
+.navGroup {
+    text-align: center;
+    width: 65%;
+    margin: auto;
+    margin-left: 25%;
+    margin-bottom: 1%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navGroup > span {
+    display: flex;
+}
+
+.navGroup span.selected {
+    color: var(--elc-orange);
+}
+
+.navGroup a {
+    color: var(--elc-teal-dark);
+    font-family: "Open Sans", sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+}
+
+.navGroup.home a,
+.navGroup.home span.selected {
+    padding: 10px 25px 10px 25px;
+}
+
+.navGroup a,
+.navGroup span.selected {
+    padding: 10px 50px 10px 50px;
+    margin: 0;
+    display: flex;
+    overflow: hidden;
+    justify-content: space-between;
+    flex-shrink: initial;
+    flex-direction: row;
+    margin-right: 2%;
+    text-align: center;
+    text-decoration: none;
+    font-family: "Open Sans", sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: var(--elc-teal-dark);
+}
+
+.navGroup > span:first-child {
+    text-align: left;
+    margin-left: 1.5%;
+    flex-grow: 1.5;
+}
+
+.navGroup > span > span,
+.navGroup > span > a {
+    border-right: 1px solid var(--navgroup_sep_light);
+    flex-grow: .15;
+}
+
+.navGroup span.divider {
+    width: 2px;
+    display: flex;
+    flex-basis: 100%;
+    height: 40px;
+    content: "";
+}
+
+.navGroup a:hover {
+    color: var(--elc-orange);
+    cursor: pointer;
+}
+
+@media (max-width: 1467px) {
+    .navGroup a {
+        margin: auto;
+        float: none;
+        border: none;
+        border-right: 1px solid var(--navgroup_sep_light);
+    }
+}
+
+@media (max-width: 848px) {
+    .navGroup {
+        margin: auto;
+        width: 100%;
+        float: none;
+        display: block;
+    }
+    .navGroup a {
+        margin: auto;
+        float: none;
+        border: none;
+        padding: 10px 10px;
+    }
+}
+
+@media (max-width: 600px) {
+    .navGroup.home a,
+    .navGroup.home span.selected {
+        padding: 0px 0px 0px 0px;
+    }
+}
+
+/* ── Footer copyright link ──────────────────────────────────────── */
+
+#elcCopyright {
+    color: #000000;
+}
+
+#elcCopyright img {
+    width: 100px;
+    padding: 0px;
+}
+
+/* ── Collection page ────────────────────────────────────────────── */
+
+.collectionPage__header {
+    padding: 1.5rem 0 1rem;
+    border-bottom: 1px solid var(--header_light, #e0e0e0);
+    border-bottom-color: var(--elc-teal);
+    margin-bottom: 0.5rem;
+}
+
+.collectionPage__title {
+    font-family: "Open Sans", sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--elc-teal-dark);
+    margin-bottom: 0.25rem;
+}
+
+.collectionPage__meta {
+    font-size: 0.875rem;
+    color: #787878;
+    margin-bottom: 0.5rem;
+}
+
+.collectionPage__responsibility {
+    text-transform: lowercase;
+}
+
+.collectionPage__separator {
+    margin: 0 0.25rem;
+}
+
+.collectionPage__description {
+    margin-bottom: 0;
+    max-width: 72ch;
+}
+
+/* ── ELC 4–inspired site chrome ─────────────────────────────────── */
+
+.siteHeader {
+    background-color: var(--elc-page-bg);
+}
+
+.siteHeader__brandRow {
+    background-color: var(--elc-header-bg);
+    border-radius: 12px;
+    margin: 1.25rem auto 0;
+    max-width: 80%;
+    padding: 1.5rem 2rem 1rem;
+}
+
+.siteHeader__title {
+    font-family: "Open Sans", sans-serif;
+    font-size: clamp(1.75rem, 4vw, 2.75rem);
+    font-weight: 300;
+    color: var(--elc-teal-light);
+    letter-spacing: 0.02em;
+    line-height: 1.15;
+}
+
+.siteHeader__description {
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    max-width: 60ch;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.siteHeader__organizers {
+    color: #ffffff;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    margin-top: 0.75rem;
+    opacity: 0.85;
+}
+
+.siteHeader__navBar {
+    background-color: var(--elc-nav-bg) !important;
+    border-bottom: 1px solid #d5d5d5;
+    margin-top: 0.75rem;
+
+    .container {
+        max-width: 80%;
+    }
+
+    .navbar-nav {
+        flex-direction: row;
+    }
+
+    .navbar-toggler {
+        border-color: var(--elc-teal-dark);
+    }
+}
+
+.siteHeader__navLink {
+    color: var(--elc-teal-dark) !important;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 0.85rem 1.75rem !important;
+    border-right: 1px solid var(--navgroup_sep_light);
+    text-decoration: none !important;
+    transition: color 0.15s ease;
+
+    &:last-child {
+        border-right: none;
+    }
+
+    &:hover,
+    &:focus {
+        color: var(--elc-orange) !important;
+    }
+
+    &.active {
+        color: var(--elc-orange) !important;
+    }
+}
+
+/* ── Page mains ─────────────────────────────────────────────────── */
+
+#galleryMain,
+#collectionMain,
+#searchMain,
+#playlistMain,
+#aboutMain {
+    background-color: var(--elc-page-bg);
+    padding: 2rem 0 3rem;
+}
+
+#galleryGrid,
+#collectionMain > .container,
+#aboutContainer {
+    max-width: 80%;
+}
+
+/* ── White content surface (readable panel over the page background) ─ */
+
+.contentSurface {
+    background-color: var(--containerbackground_light);
+    border-radius: 12px;
+    padding: 1.75rem 2rem;
+    margin: 1rem auto 1.5rem;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e4c3d2;
+}
+
+/* ── Gallery card ───────────────────────────────────────────────── */
+
+.galleryCard {
+    background: transparent;
+    border: none;
+    transition: transform 0.2s ease;
+
+    a {
+        text-decoration: none;
+        color: inherit;
+        display: block;
+    }
+
+    &:hover {
+        transform: translateY(-2px);
+    }
+
+    &__cover {
+        border-radius: 9999px;
+        border: 2px solid #bdbdbd;
+        object-fit: cover;
+        aspect-ratio: 259 / 105;
+        background-color: #fff;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    &:hover &__cover {
+        border-color: var(--elc-teal);
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+    }
+
+    &__info {
+        text-align: center;
+        padding: 0.6rem 0.5rem 0;
+    }
+
+    &__title {
+        font-family: "Open Sans", sans-serif;
+        font-size: 0.82rem;
+        font-weight: 700;
+        color: #2c2c2c;
+        margin: 0;
+        line-height: 1.3;
+    }
+
+    &__author {
+        font-size: 0.72rem;
+        font-style: italic;
+        color: #2c2c2c;
+        margin: 0.15rem 0 0;
+    }
+}
+
+/* ── Playlist builder ───────────────────────────────────────────── */
+
+.playlistBuilder {
+    &__legend {
+        font-weight: 700;
+    }
+
+    &__options {
+        display: flex;
+        flex-direction: column;
+        gap: 0.1rem;
+        max-height: 16rem;
+        overflow-y: auto;
+        padding: 0.25rem 0.6rem;
+        border: 1px solid #e0e0e0;
+        border-radius: 0.375rem;
+    }
+
+    &__row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 0.15rem 0;
+        border-bottom: 1px solid #f0f0f0;
+
+        &:last-child {
+            border-bottom: none;
+        }
+    }
+
+    &__rowLabel {
+        flex: 1;
+        min-width: 0;
+    }
+
+    &__rowControls {
+        display: flex;
+        flex-shrink: 0;
+        gap: 1rem;
+    }
+
+    &__results {
+        max-height: 16rem;
+        overflow-y: auto;
+        padding: 0.5rem 0.6rem;
+        border: 1px solid #e0e0e0;
+        border-radius: 0.375rem;
+    }
+}
+
+/* ── Site footer ────────────────────────────────────────────────── */
+
+#siteFooter {
+    margin-top: 0;
+
+    .card {
+        background-color: var(--elc-header-bg);
+        border: none;
+        border-radius: 0;
+        color: rgba(255, 255, 255, 0.75);
+    }
+
+    .siteFooter__citation,
+    .siteFooter__copyright {
+        font-size: 0.85rem;
+        margin-bottom: 0.35rem;
+    }
+
+    a {
+        color: var(--elc-teal-light);
+    }
+}
+
+/* ── Small-screen overrides for site chrome ─────────────────────── */
+
+@media (max-width: 991px) {
+    .siteHeader__brandRow {
+        max-width: 92%;
+        padding: 1.25rem 1.25rem 0.85rem;
+    }
+
+    .siteHeader__navBar .container {
+        max-width: 92%;
+    }
+
+    .siteHeader__navLink {
+        border-right: none;
+        padding: 0.65rem 1rem !important;
+    }
+
+    #galleryGrid,
+    #collectionMain > .container,
+    #aboutContainer {
+        max-width: 92%;
+    }
+}
+
+/* ── Work page layout ───────────────────────────────────────────── */
+
+.workPage > .row {
+    margin-bottom: 0.25rem;
+}
+
+.workPage .col-md-6,
+.workPage .col-12 {
+    display: flex;
+}
+
+.workPage .card {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0;
+}
+
+.workPage .card-body {
+    flex: 1;
+    padding: 1.5rem 1.75rem 1.75rem;
+}
+
+.workPage .card-body h3 {
+    margin: 1.5rem 0 0.75rem;
+}
+
+.workPage .card-body > :first-child {
+    margin-top: 0;
+}
+
+.workPage .card p {
+    margin-top: 0.75em;
+    margin-bottom: 0.75em;
+}
+
+.workPage .card-text blockquote {
+    margin: 1em 1em 1em 0;
+    padding-inline-start: 1.25em;
+    border-inline-start: 3px solid var(--elc-teal, #d5d5d5);
+    color: var(--textcolor_light, inherit);
+    font-style: italic;
+}
+
+.workPage .editorialCardStatement {
+    width: 100%;
+    margin: 0 0 1rem;
+}
+
+.workPage .editorialCardStatement p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.workPage .editorialCard .btn {
+    margin-top: 0.5rem;
+}
+
+.workPage .accessibilityCard__body {
+    padding-top: 1rem;
+}
+
+.workPage .accessibilityCard__grid {
+    gap: 1.25rem 2rem;
+}
+
+.workPage .accessibilityCard__label {
+    margin-bottom: 0.35rem;
+}
+
+.workPage a.beginLink {
+    margin: 1.5rem auto 0.75rem;
+    padding: 0.85rem 2rem;
+    line-height: 1.4;
+    max-width: 320px;
+    border-radius: 6px;
+}
+
+.workPage .artistCardStatement,
+.workPage .artistCardBio {
+    padding: 0;
+    line-height: 1.6;
+}
+
+.workPage .artistCardStatement {
+    margin-bottom: 1.25rem;
+}
+
+@media (max-width: 991px) {
+    .workPage {
+        max-width: 92%;
+    }
+}

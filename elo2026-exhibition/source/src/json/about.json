@@ -1,0 +1,53 @@
+{
+  "name": "ELO 2026 Online Exhibition",
+  "description": "ELOnline 2026: (Un)Supervised",
+  "organizers": {
+    "title": "Conference Committees",
+    "chair": "Anastasia Salter, University of Central Florida",
+    "coChairs": [
+      "John Murray, University of Central Florida"
+    ],
+    "team": [
+      "Lyle Skains, Bournemouth University (Exhibition Co-Chair)",
+      "Daniel Cox, Illinois State University (Exhibition Co-Chair)",
+      "Richard Finch, University of Central Florida",
+      "Alyssa Barrack, University of Central Florida"
+    ]
+  },
+  "statement": {
+    "title": "Curatorial Statement",
+    "paragraphs": ["Electronic literature has always occupied a productive tension between structure and openness. Every digital work is shaped by systems—interfaces, platforms, protocols, algorithms, archives, institutions—yet each also invites readers to exceed those structures through interpretation, play, resistance, and care. The works gathered in the ELOnline 2026 Media Exhibition explore this tension from multiple perspectives, offering a rich response to this year's conference theme, (Un)Supervised.",
+    "While contemporary discussions of supervision are inevitably framed by large language models and generative AI, this exhibition demonstrates that the question is considerably older and broader. What supervises reading? What supervises writing? Who maintains digital culture, and who is excluded from it? What forms of creativity emerge within constraint, and what possibilities become visible only when systems fail, decay, or are deliberately reimagined?",
+    "Across the exhibition, code repeatedly refuses invisibility. Works such as *BUGCAT*, *Actioncoderz*, *Drifts*, and *Shopping Mall 1999* position software not merely as a substrate for literature but as literature itself: something to be read, questioned, manipulated, and learned through. Here, programming becomes an expressive language, a pedagogical practice, and a critical object. Computation is revealed not as a neutral mechanism but as a site where meaning, authority, and authorship are continually negotiated.",
+    "Equally prominent are works concerned with archives and cultural memory. *Between the Tags*, *Digital T/[H/]Readings*, and *The Two Deaths of Translucent Tim* remind us that digital culture survives only through acts of preservation, curation, and collective remembrance. These works resist the fantasy of the internet as permanent, instead foregrounding maintenance, decay, disappearance, and the communities that sustain cultural memory long after platforms, technologies, or institutions have shifted.",
+    "Questions of authorship likewise permeate the exhibition. Generative systems appear throughout—not solely through contemporary AI, but through procedural writing, combinatory poetics, rule-based composition, remix, and collaborative production. Works including *Diver Quilt Magnet*, *Ripples*, *Obsolete Models, Living Hosts*, *Paper-Cut Canyon*, and *The Grand Hotel Bald Cockatoo* explore creativity as an ecological process distributed across humans, machines, historical texts, and computational systems. Rather than framing technology as either threat or replacement, these works invite more nuanced reflections on collaboration, responsibility, and the material consequences of digital production.",
+    "Many of the works also return to electronic literature's longstanding pedagogical impulse. Interactive environments become spaces in which readers learn through exploration rather than instruction, whether engaging with literary interpretation, programming, language learning, or ecological stewardship. Works such as *The Story of Joe*, *Shopping Mall 1999*, *Yo soy un teléfono*, and the exhibition's environmentally focused narratives demonstrate that education and experimentation need not occupy separate domains. Electronic literature continues to function not only as an artistic practice but also as a mode of inquiry capable of cultivating technical, cultural, and ethical literacy.",
+    "Running alongside these concerns is a sustained attention to interface itself. Desktop metaphors, hypertext structures, virtual reality, browser windows, scrolling layers, chat interfaces, and obsolete visual vernaculars all become expressive media through which readers negotiate uncertainty, intimacy, memory, identity, and power. Interaction is rarely presented as mastery. Instead, these works encourage wandering rather than optimisation, reflection rather than efficiency, and participation rather than control.",
+    "Taken together, the exhibition reflects a field that continues to resist easy categorisation. Hypertext fiction sits alongside code poetry, procedural generation beside documentary practice, immersive environments beside archival projects, browser games beside computational essays. This diversity is not accidental but characteristic of electronic literature itself, whose history has always been defined by experimentation across technological, disciplinary, and institutional boundaries.",
+    "If the conference theme asks us to consider what it means to be supervised—or unsupervised—these works suggest that electronic literature has never been wholly either. It has always emerged through negotiated relationships: between reader and system, author and platform, institution and community, archive and ephemerality, human imagination and computational process. The exhibition therefore offers not a single answer to the question of supervision, but a constellation of practices that continue to reshape how we read, write, preserve, and imagine literature in digital environments."
+  ]
+  },
+  "licenses": {
+    "title": "Licenses and Software",
+    "entries": [
+      {
+        "prefix": "tagify",
+        "href": "https://github.com/yairEO/tagify/blob/master/LICENSE",
+        "linkText": "License"
+      }
+    ]
+  },
+  "citation": {
+    "exhibitionName": "ELO 2026 Online Exhibition",
+    "publicationYear": "2026",
+    "editors": "Skains, L., Cox, D.",
+    "publisher": "Electronic Literature Organization",
+    "language": "English",
+    "ogType": "book_section",
+    "twitterCard": "summary"
+  },
+  "credit": {
+    "history": "This exhibition software was originally created by John Murray for Electronic Literature Collection 4 (2022). It was then updated by John Murray and Dan Cox for use with the ELO 2024 online exhibition. ELMS metadata functionality was added by Dan Cox in 2025 and additional search and playlist functionality was added by Dan Cox in 2026.",
+    "metadata": "<p><a href='https://the-next.org/elms'>Extended eLectronic Metadata Schema (ELMS)</a> is a metadata schema developed by The NEXT. This exhibition software adapts ELMS 3.0 with changes to multiple major sections to create a more generic schema through extending description fields for more lay audiences and adding extensions for artificial intelligence metadata.</p>"
+  }
+}
