@@ -1,0 +1,5 @@
+# Original repo tracked media (*.mp4 *.webm *.glb *.pck *.blend *.fbx) via Git LFS
+# and *.wav as binary. LFS filters are removed for this archive; the real media
+# binaries are mirrored to this repository's GitHub Release (tag: elo24-gallery-media).
+# The media files in this source tree are the original Git LFS pointer stubs.
+*.wav binary

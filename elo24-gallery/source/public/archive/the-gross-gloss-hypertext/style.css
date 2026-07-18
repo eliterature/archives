@@ -1,0 +1,196 @@
+@font-face {
+  font-family: c64;
+  src: url(C64.woff);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: c64;
+  padding: 10px;
+  padding-top: 10px;
+  color: #08f;
+  background-color: #08f;
+}
+
+/* Style the header */
+.header {
+  grid-area: header;
+  background-color: #f1f1f1;
+  padding: 5px;
+  text-align: center;
+  font-size: 55px;
+  /*letter-spacing: 1.5em;*/
+}
+
+/* The grid container */
+.grid-container {
+  display: grid;
+  text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-bottom: auto;
+  grid-template-areas:
+    'header header header header header header header header'
+    'left   left  middle  middle middle middle  right  right'
+    'footer footer footer footer footer footer footer footer';
+  /* grid-column-gap: 10px; - if you want gap between the columns */
+}
+
+.left,
+.middle,
+.right {
+  padding: auto;
+  
+  /* code for visibility */
+  
+  /* border-width: 1px;
+  border-color: #ffffff;
+  border-style: dashed; */
+ 
+}
+
+.middle {
+  padding-top: 2%;
+  padding-right: 2%;
+  padding-left: 2%;
+  font-size: 1.3em;
+  line-height: 1.6;
+  margin: auto;
+  max-width: 800px;
+  border-width: 10px;
+  border-color: #ee7;
+  border-style: ridge;
+  padding-bottom: 30%;
+  background-color: #00a;
+}
+
+#toc {
+  text-align: center;
+}
+
+table {
+  table-layout: fixed;
+  width: 600px;
+  height: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+td, th {
+  color:#c4c;
+  cursor: pointer;
+  border-width: 10px;
+  text-align: center;
+  border-color: #ee7;
+  border-style: ridge;
+  width: 100px;
+  height: 100px;
+}
+
+#imgFrame {
+  border-width: 0px;
+  border-color: #fff;
+  border-width: 10px;
+  border-color: #ee7;
+  border-style: ridge;
+}
+
+#imgFrame img {
+  display: none;
+  margin: auto;
+  width: 100%;
+}
+
+/* Style the left column */
+.left {
+  grid-area: left;
+  width: 200%;
+}
+
+/* Style the right column */
+.right {
+  grid-area: right;
+  transform: translate(-50%, 0%);
+  width: 200%;
+}
+
+/* Style the middle column */
+.middle {
+  grid-area: middle;
+  z-index: 1;
+}
+
+img {
+  width: 85%;
+}
+
+/* Style the footer */
+.footer {
+  max-width: 1200px;
+  border-color: #ee7;
+  border-top-style: ridge;
+  border-left-style: ridge;
+  border-right-style: ridge;
+  border-width: 20px;
+  grid-area: footer;
+
+  font-size: 20px;
+
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 10%;
+
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #00a;
+  padding: 3%;
+  text-align: center;
+
+  z-index: 2;
+}
+
+a {
+  color: #c4c;
+  text-decoration: underline;
+}
+
+p {
+  text-align: left;
+  padding: 10%;
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media (max-width: 400px) {
+  .grid-container {
+    grid-template-areas:
+      'header header header header header header'
+      'left   left   left   left   left   left'
+      'middle middle middle middle middle middle'
+      'right  right  right  right  right  right'
+      'footer footer footer footer footer footer';
+  }
+}
+
+hr {
+  border-width: 5px;
+  border-color: #08a;
+  width: 60%;
+}
+
+.padded-dropcap {
+  text-align: left;
+  padding-left: 5px;
+  padding-right: 10px;
+  float: left;
+  position: relative;
+  top: -0.25em;
+  margin-bottom: -0.6em;
+  margin-left: -6px;
+  margin-right: 2px;
+  font-size: 4em;
+}

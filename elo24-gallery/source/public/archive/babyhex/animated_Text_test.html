@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Animated String</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  #button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    font-size: 24px;
+    padding: 10px 20px;
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    z-index: 999;
+  }
+
+  #container {
+    position: relative;
+    margin-top: 100px;
+    text-align: center;
+    font-size: 36px;
+    font-weight: bold;
+  }
+
+  .hyphen {
+    display: inline-block;
+    width: 20px; /* Adjust the width of hyphen as needed */
+  }
+</style>
+</head>
+<body>
+<button id="button">Animate</button>
+<div id="container"></div>
+
+<script>
+document.getElementById('button').addEventListener('click', function() {
+  var originalText = "I am a big four-eyed lame-o and I wear the same stupid sweater everyday";
+  var container = document.getElementById('container');
+  container.innerHTML = ''; // Clear previous content
+
+  // Replace each character with a hyphen
+  for (var i = 0; i < originalText.length; i++) {
+    var hyphen = document.createElement('span');
+    hyphen.classList.add('hyphen');
+    hyphen.textContent = '-';
+    container.appendChild(hyphen);
+  }
+
+  // Animation
+  var hyphens = document.querySelectorAll('.hyphen');
+
+  for (var i = 0; i < hyphens.length; i++) {
+    var randomChars = getRandomCharacters(); // Generate random characters for each hyphen
+    animateHyphen(hyphens[i], originalText[i], randomChars);
+  }
+});
+
+function getRandomCharacters() {
+  var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()-=_+[]{}|;':,.<>?";
+  return chars.split('').sort(function() { return 0.5 - Math.random() }).slice(0, 4);
+}
+function animateHyphen(element, finalChar) {
+  var randomChars = getRandomCharacters(); // Generate random characters for each hyphen
+  var currentIndex = 0;
+  var interval = setInterval(function() {
+    if (currentIndex < randomChars.length) {
+      element.textContent = randomChars[currentIndex++];
+    } else {
+      clearInterval(interval);
+      element.textContent = finalChar;
+    }
+  }, 50); // Adjust animation speed as needed
+}
+</script>
+</body>
+</html>

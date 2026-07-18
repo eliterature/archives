@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset=utf-8>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta property="og:title" content="Web Strands">
+		<meta property="og:author" content="Nick Montfort">
+		<meta property="og:type" content="website">
+		<meta property="og:description" content="Six tiny Web poems by Nick Montfort">
+		<meta property="og:image" content="/images/web_strands.png">
+		<meta property="og:url" content="https://nickm.com/poems/strands/">
+        <style>
+			@font-face {
+			font-family: 'Merriweather';
+			font-style: normal;
+			font-weight: 400;
+			src: url('/fonts/merriweather-v21-latin-regular.eot');
+			src: local('Merriweather Regular'), local('Merriweather-Regular'), url('/fonts/merriweather-v21-latin-regular.eot?#iefix') format('embedded-opentype'), url('/fonts/merriweather-v21-latin-regular.woff2') format('woff2'), url('/fonts/merriweather-v21-latin-regular.woff') format('woff'), url('/fonts/merriweather-v21-latin-regular.ttf') format('truetype'), url('/fonts/merriweather-v21-latin-regular.svg#Merriweather') format('svg');
+		}
+
+		@font-face {
+			font-family: 'Merriweather';
+			font-style: italic;
+			font-weight: 400;
+			src: url('/fonts/merriweather-v21-latin-italic.eot');
+			src: local('Merriweather Italic'), local('Merriweather-Italic'), url('/fonts/merriweather-v21-latin-italic.eot?#iefix') format('embedded-opentype'), url('/fonts/merriweather-v21-latin-italic.woff2') format('woff2'), url('/fonts/merriweather-v21-latin-italic.woff') format('woff'), url('/fonts/merriweather-v21-latin-italic.ttf') format('truetype'), url('/fonts/merriweather-v21-latin-italic.svg#Merriweather') format('svg');
+		}
+
+		body {
+			margin: 2rem;
+			font-family: 'Merriweather', serif;
+			font-size: clamp(1rem, 1vw, 1.5rem);
+			color: #eee;
+			background: #234;
+		}
+
+		h1 {
+			margin-bottom: 0;
+		}
+
+		h1, h2, h3 {
+			text-align: center;
+		}
+
+		a {
+			text-decoration: none;
+			color: #f44;
+		}
+
+		div {
+			margin-bottom: 1rem;
+		}
+
+		p {
+			margin: 0;
+		}
+
+		p + p {
+			margin: 0;
+			text-indent: 1rem;
+		}
+    </style>
+		<title>Web Strands</title>
+	</head>
+
+	<body>
+		<h1>Web Strands</h1>
+		<h2>HTML5 Poems of a Single Line<br>(No More than 128 Bytes)</h2>
+		<h3><a href="http://nickm.com">Nick Montfort ◊ nickm.com</a></h3>
+		<ul style="font-size: 1.5rem">
+			<li><a href="debate/">Debate</a> <span style="font-size: 1rem;">☚
+					WARNING: May trigger seizures in those with photosensitive
+					epilepsy</span></li>
+			<li><a href="utterer/">Utterer</a></li>
+			<li><a href="i_saw_the_vowels_in_gold/">I Saw the Vowels in Gold</a></li>
+			<li><a href="fusion/">Fusion</a></li>
+			<li><a href="impressions/">Impressions</a> <span style="font-size: 1rem;">☚
+					WARNING: May trigger seizures in those with photosensitive
+					epilepsy</span></li>
+			<li><a href="glossolaliatron/">Glossolaliatron</a></li>
+		</ul>
+		<p style="font-size: 1.2rem;"><i>Web Strands</i> consists of half a dozen 
+			extremely tiny Web pages, each a computational poem driven by JavaScript.
+			These are visual and sound poems, three of each, rather than more traditional
+			ones.</p>
+		<div></div>
+		<p>I’ve written a <a href="https://nickm.com/post/2024/02/poetix/">blog post
+				about my poetics</a> (or poetix), explaining why I write
+			short computational poems of any sort. Let me address, then, this 128 byte
+			limit. Those who care most about writing aesthetic computer programs of small
+			size (“sizecoders”) usually consider powers of two to define different
+			categories of work: Programs of at most 256 bytes, 128 bytes, 64 bytes, etc.
+			This has to do with the organization of computer memory, the page size on
+			8-bit computers (it’s 256 bytes), and other things that are somewhat
+			esoteric. Because these limits are traditional in this context, I’m adopting 
+			one of them for this project.</p>
+		<p>Credit where credit is due: As of early 2024, there were three 
+			released works of aesthetic HTML5/JavaScript that fit into the smaller 64 
+			byte category. The earliest is  
+			<a href="http://www.p01.org/64b_thread_js/"><i>Thread JS</i> by Mathieu “p01”
+				Henri</a> (2013). When the mouse is wiggled, this one draws a maze-like 
+			pattern, using two diagonal line characters, similar to that of the Commodore 
+			program <span style="font-family: monospace;">10 PRINT CHR$(205.5+RND(1)); : 
+				GOTO 10.</span> Then there’s
+			<a href="https://www.pouet.net/prod.php?which=77075"><i>JScripinski</i> by
+				HellMood</a> of the demoscene group DESiRE (2018). It produces an SVG
+			image of a Sierpiński triangle using the underscore (_) and the number sign
+			(#). Finally, 
+			<a href="https://demozoo.org/productions/337798/"><i>While(Heart)Break</i> 
+			by KilledByAPixel</a> (2024) fills the browser with scattered hearts and 
+			black squares, although it doesn’t work for me on Linux in either Firefox or 
+			Chrome. These three aesthetic programs all use typographical symbols of some 
+			sort. Although they were all offered as demoscene productions, I’m glad to 
+			claim them as visual poems, too.</p>
+		<p><i>Web Strands</i> is part of the online exhibition at the online 
+			<a href="https://stars.library.ucf.edu/elo2024/">Electronic Literature
+				 Organization Conference and Media Arts Festival: (Un)linked,</a> July
+			18-21, 2024. It was presented in draft format in the open mic/open mouse at 
+			WordHack in Brooklyn on February 15, 2024. Thanks to the WordHack audience
+			for seeing and hearing these, and for the encouragement! Thanks to Flourish Klink and my remote vowel correspondent, Christian Bök, for detailed 
+			responses to these pieces and some others that didn’t make the cut.</p>
+		<p>Of the six <i>Web Strands,</i>“Impressions” is based on one of the twenty-one 
+			poems/artworks, “Wedge,” in my installation <i>Process Pages</i> (2022), 
+			which mainly explores the non-alphabetic corners of Unicode. I further developed “Wedge” into a version
+			of “Impressions” released at the online demoparty Lovebyte 2024. The version 
+			of “Impressions” presented here is a refinement of that one, with the glyphs
+			centered in the viewport.</p>
+		<div></div>
+		<p>—Nick Montfort<br>
+			<span style="opacity:0">—</span>May 2024</p>
+	</body>
+
+</html>

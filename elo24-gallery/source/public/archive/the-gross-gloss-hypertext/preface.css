@@ -1,0 +1,151 @@
+@font-face {
+  font-family: c64;
+  src: url(C64.woff);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: helvetica;
+  color: #00;
+  padding: 10%;
+  line-height: 1.6;
+}
+
+#parent {
+  display: flex;
+  text-align: center;
+}
+
+#a {
+  width: 50%;
+}
+
+#b {
+  flex: 1;
+}
+
+/* Style the header */
+.header {
+  grid-area: header;
+  background-color: #afafaf;
+  padding: 5px;
+  text-align: center;
+  font-size: 35px;
+  /*letter-spacing: 1.5em;*/
+}
+
+/* The grid container */
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'header header header header header header header header'
+    'left   left   left   middle middle right  right  right'
+    'footer footer footer footer footer footer footer footer';
+  /* grid-column-gap: 10px; - if you want gap between the columns */
+}
+
+.left,
+.middle,
+.right {
+  padding: 10px;
+
+  /* code for visibility */
+  /*
+  border-width: 1px;
+  border-color: #ffffff;
+  border-style: dashed;
+  */
+}
+
+.middle {
+  border-width: 10px;
+  border-color: #ee7;
+  border-style: ridge;
+}
+
+#toc {
+  text-align: center;
+}
+
+#imgFrame {
+  border-width: 0px;
+  border-color: #fff;
+}
+
+/* Style the left column */
+.left {
+  grid-area: left;
+  text-align: right;
+}
+
+/* Style the middle column */
+.middle {
+  grid-area: middle;
+}
+
+img {
+  width: 100%;
+}
+
+/* Style the right column */
+.right {
+  grid-area: right;
+}
+
+/* Style the footer */
+.footer {
+  grid-area: footer;
+  background-color: #f1f1f1;
+  padding: 30px;
+  text-align: center;
+}
+
+a {
+  color: #c4c;
+  text-decoration: none;
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media (max-width: 400px) {
+  .grid-container {
+    grid-template-areas:
+      'header header header header header header'
+      'left   left   left   left   left   left'
+      'middle middle middle middle middle middle'
+      'right  right  right  right  right  right'
+      'footer footer footer footer footer footer';
+  }
+}
+
+table {
+  font-family: helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+}
+
+hr {
+  border-width: 5px;
+  border-color: #08a;
+  width: 60%;
+}
+
+.padded-dropcap {
+  padding-left: 5px;
+  padding-right: 10px;
+  float: left;
+  position: relative;
+  top: -0.25em;
+  margin-bottom: -0.2em;
+  margin-left: -6px;
+  margin-right: 2px;
+  font-size: 5em;
+}

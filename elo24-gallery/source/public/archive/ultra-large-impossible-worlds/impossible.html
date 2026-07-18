@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>    Ultra_large: Impossible Worlds: Generated Poetics by Jason Nelson</title>
+
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative; /* To position elements relative to the body */
+            background-color: black;
+        }
+        #imageContainer {
+            width: 90vw;
+            height: 90vh;
+            max-width: 100%;
+            max-height: 100%;
+            overflow: hidden;
+            position:fixed; /* To position elements relative to the image container */
+        }
+        #randomImage {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+		  #randomImageContainer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 80; /* Ensure images are behind other elements */
+        }
+        .randomDiv {
+            position: absolute;
+            border: 5px solid #ce0505;
+            background-color: white; /* White background */
+			opacity: 0.8;
+            padding: 5px;
+            text-align: center;
+			font-size: 1.2vw;
+            z-index: 100;
+            max-width: 22%; /* Maximum width for random divs */
+            word-wrap: break-word; /* Enable word wrapping */
+			
+        }
+        svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; /* Make sure SVG doesn't interfere with mouse events */
+            z-index: 95;
+        }
+		
+		  .circleText {
+            fill: yellow;
+            font-size: 82px;
+            text-anchor: middle;
+            alignment-baseline: middle;
+        }
+       .button-container {
+            position:fixed;
+            top: 80px;
+            right: 40px;
+            z-index: 150;
+        }
+        #pauseButton {
+            background-color: red;
+            color: white;
+            font-size: 22px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #pauseButton.unpause {
+            background-color: yellow;
+            color: black;
+        }
+		#filterOverlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.9) 100%);
+            z-index: 90; /* Ensure it's between the image and other elements */
+            pointer-events: none; /* Allow click-through to underlying elements */
+        }
+		#preloader {
+			color: white;
+			font-size: 2.2vw;
+			top: 100;
+			left: 100;
+		}
+		
+    </style>
+</head>
+<body>
+	
+	<div id="preloader">
+		<div><h1 style="color:white;">Thinking and Generating</h1></div>
+</div>
+   <div id="imageContainer">
+        <div id="filterOverlay"></div>
+        <div id="randomImageContainer">
+            <!-- Separate container for random images -->
+            <img id="randomImage" src="" alt="Random Image">
+        </div>
+        <div class="randomDiv" id="randomDiv1"></div>
+        <div class="randomDiv" id="randomDiv2"></div>
+        <div class="randomDiv" id="randomDiv3"></div>
+        <div class="randomDiv" id="randomDiv4"></div>
+        <div class="randomDiv" id="randomDiv5"></div>
+        <div class="randomDiv" id="randomDiv6"></div>
+        <svg id="lineContainer"></svg>
+        <svg id="circleContainer"></svg>
+    </div>
+	 <div class="button-container">
+        <button id="pauseButton"> Pause -> Read</button>
+    </div>
+
+<script>
+	
+    // Array of image URLs
+    const images = [
+       'ulback1.jpg',
+		'ulback2.jpg',
+		 'ulback3.jpg',
+		'ulback4.jpg',
+		 'ulback5.jpg',
+		'ulback6.jpg',
+		 'ulback7.jpg',
+		'ulback8.jpg',
+		 'ulback9.jpg',
+		'ulback10.jpg',
+		 'ulback11.jpg',
+		'ulback12.jpg',
+		 'ulback13.jpg',
+		'ulback14.jpg',
+		 'ulback15.jpg',
+		'ulback16.jpg',
+		 'ulback17.jpg',
+		'ulback18.jpg',
+		 'ulback19.jpg',
+		'ulback20.jpg',
+		 'ulback21.jpg',
+		'ulback22.jpg',
+		 'ulback23.jpg',
+		'ulback24.jpg',
+		 'ulback25.jpg',
+		'ulback26.jpg',
+		 'ulback27.jpg',
+		'ulback28.jpg',
+		 'ulback29.jpg',
+		'ulback30.jpg',
+		 'ulback31.jpg',
+		'ulback32.jpg'
+
+    ];
+	
+	// Function to preload images
+    function preloadImages(imageUrls, callback) {
+        let loaded = 0;
+        const totalImages = imageUrls.length;
+        imageUrls.forEach(url => {
+            const img = new Image();
+            img.onload = img.onerror = () => {
+                loaded++;
+                if (loaded === totalImages) {
+                    callback();
+                }
+            };
+            img.src = url;
+        });
+    }
+
+    // Function to show the preloader
+    function showPreloader() {
+        document.getElementById('preloader').style.display = 'block';
+    }
+    
+    // Function to hide the preloader
+    function hidePreloader() {
+        document.getElementById('preloader').style.display = 'none';
+    }
+
+  
+
+    // Arrays of random texts for each div
+    const texts1 = [
+ '  Birds nest in sensor trees, digital guardians cradling their eggs. => if (sensorTree.hasBirdsNesting()) { sensorTree.guardEggs(); } ',
+'  Bees perform a pollen dance with micro-drones. for (each bee : swarm) { bee.performPollenDanceWithDrones(); } ',
+'  Squirrels find nuts dispensed with precision from automated feeders. => for (each squirrel : population) { squirrel.findNutsFromAutomatedFeeders(); }',
+'  Water quality sensors monitor rivers, ensuring safe passage for fish. => if (riverSensor.isMonitoringWaterQuality()) { riverSensor.ensureSafePassageForFish(); } ',
+'  Health data streams from collars worn by dogs. => if (dogCollar.isCollectingHealthData()) { dogCollar.streamHealthData(); } ',
+'  Robotic toys engage cats in playful activities. => for (each toy : roboticToys) { toy.engageCatsInPlayfulActivities(); }',
+'  Harnesses monitor the health of horses. => if (horseHarness.isMonitoringHealth()) { horseHarness.monitorHealth(); } ',
+'  Dolphins communicate with researchers through underwater sound systems.=> if (dolphin.isUnderwater()) { dolphin.communicateWithResearchers(); } ',
+'  Drones oversee the health and movement of grazing cows. => for (each drone : grazingCows) { drone.overseeHealthAndMovement(); } ',
+'  Automated troughs supply elephants with water. => for (each trough : automatedTroughs) { trough.supplyWaterToElephants(); }',
+'  Climate control maintains optimal conditions in bat roosts. => if (batRoostControl.isMaintainingConditions()) { batRoostControl.maintainOptimalConditions(); } ',
+'  Automated stations feed deer based on population data. => for (each station : automatedStations) { station.feedDeerBasedOnPopulationData(); } ',
+'  GPS collars send prey location data to wolves packs. => for (each collar : prey) { collar.sendLocationDataToWolfPacks(); }',
+'  Enrichment devices dispense bamboo treats to pandas. => for (each device : enrichmentDevices) { device.dispenseBambooTreats(); } ',
+'  Water filters keep frog ponds clean. => if (waterFilter.isCleaningFrogPonds()) { waterFilter.keepFrogPondsClean(); } ',
+'  Cameras monitor eagle nests on high platforms. => if (eagleNestCamera.isMonitoringNests()) { eagleNestCamera.monitorPlatforms(); } ',
+' Humidity control in hives supports thriving bee colonies. => if (hiveHumidityControl.isSupportingColonies()) { hiveHumidityControl.supportBeeColonies(); } ',
+
+
+
+    ];
+
+    const texts2 = [
+
+'  Robotic balls mimic fish movement for playful otters. => for (each ball : roboticBalls) { ball.mimicFishMovement(); } ',
+'  Interactive screens teach new tasks to monkeys. => for (each screen : interactiveScreens) { screen.teachTasksToMonkeys(); } ',
+'  Voice-activated feeders dispense food to parrots. => for (each feeder : voiceActivatedFeeders) { feeder.dispenseFoodToParrots(); } ',
+'  Sensor-equipped trees in forests monitor bear activity. => if (tree.hasSensors()) { tree.monitorBearActivity(); } ',
+' Automated watering holes quench the thirst of lions. => if (wateringHole.isAutomated()) { wateringHole.quenchThirstOfLions(); }',
+		'Iron claws clink against the asphalt => if (claws.isActive()) { AI.clinkOnAsphalt(); }',
+'A red eye glows, blinking in the dark => if (eye.isActive()) { AI.blinkRedEye(); }',
+'Steel feet leave deep imprints in the ground => if (feet.isActive()) { AI.leaveDeepImprints(); }',
+'Hydraulic arms flex, hissing with pressure => if (arms.isActive()) { AI.flexHydraulicArms(); }',
+'Gears whirr inside its chest => if (chest.isActive()) { AI.whirrGears(); }',
+'The metallic tail scrapes the pavement as it sways => if (tail.isActive()) { AI.scrapePavement(); }',
+'Copper wires dangle from its neck => if (wires.isActive()) { AI.dangleCopperWires(); }',
+'Oil drips from its joints, staining the concrete => if (joints.isActive()) { AI.dripOil(); }',
+'The aluminum skull gleams under moonlight => if (skull.isActive()) { AI.gleamUnderMoonlight(); }',
+'Rivets dot the surface of its body => if (rivets.isActive()) { AI.dotSurface(); }',
+'Steam escapes from vents along its spine => if (vents.isActive()) { AI.escapeSteam(); }',
+'A serrated blade extends from its wrist => if (blade.isActive()) { AI.extendSerratedBlade(); }',
+'Blue sparks fly from its fingertips => if (sparks.isActive()) { AI.flyBlueSparks(); }',
+'The titanium jaw snaps shut with a clang => if (jaw.isActive()) { AI.snapJaw(); }',
+'Neon green fluid pulses through tubes => if (fluid.isActive()) { AI.pulseGreenFluid(); }',
+'An antenna twitches atop its head => if (antenna.isActive()) { AI.twitchAntenna(); }',
+'Bolts tighten with every movement => if (bolts.isActive()) { AI.tightenBolts(); }',
+'The carbon fiber exoskeleton reflects the streetlights => if (exoskeleton.isActive()) { AI.reflectStreetlights(); }',
+'Circuits buzz beneath translucent casing => if (circuits.isActive()) { AI.buzzCircuits(); }',
+'A single lens rotates, scanning the surroundings => if (lens.isActive()) { AI.rotateLens(); }'
+
+
+
+
+    ];
+
+    const texts3 = [
+'Green slime stains the metal bench, oozing from a sleeping creature. => if (creature.isSleeping()) { AI.oozeGreenSlime(); }',
+'Claws of a mechanical dragon tore through steel netting in rampage. => for (each dragon : mechanicalDragons) { dragon.tearSteelNetting(); }',
+'Sharp tentacles split rubber tubing of bio-engineered creature. => bioEngineeredCreature.splitRubberTubing();',
+'Teeth of trapped mechanical beast carved scratches in titanium walls. => trappedBeast.carveScratchesInWalls();',
+'Armor plates dented in battle against colossal robotic adversary. => roboticAdversary.battleArmorDented();',
+'Glass containment unit cracked, weakened by trapped entitys energy. => trappedEntity.crackGlassUnit();',
+'Oil leaks from malfunctioning robot prototypes, staining lab floor. => robotPrototypes.leakOil();',
+'Tentacled behemoths tentacles ripped open canvas tent. => behemoth.ripCanvasTent();',
+'Strength of hulking cybernetic beast snapped metal chains. => cyberneticBeast.snapChains();',
+'Fire-spewing monsters breath scorched burn marks on concrete walls. => fireMonster.scorchConcreteWalls();',
+'Giant mechanized spiders weight bent warped steel tracks. => mechanizedSpider.warpSteelTracks();',
+'Cracked crystal power core fissured by teleportation devices energy fluctuations. => teleportationDevice.fluctuateEnergy();',
+'Corrosive alien creature sprayed acidic splatters on glass windows. => alienCreature.sprayAcidicSplatters();',
+'Winged mechanical predators talons shredded fabric banners. => mechanicalPredator.shredFabricBanners();',
+'Monstrous arachnids spiked limbs shredded rubber treads on vehicles. => monstrousArachnid.shredRubberTreads();',
+'Berserk battle mechs claws etched marks on steel doors. => battleMech.etchSteelDoors();'
+
+    ];
+
+    const texts4 = [
+ 'In the park, an AI-guided dog leads a blind man through the paths. => if (environment == park) { AI.guideBlindMan(); }',
+'Within the factory, human hands and automated limbs weave metal into motion. => for (each worker : factory) { if (worker.isHuman()) { worker.useHands(); } else { worker.useAutomatedLimbs(); } }',
+'Drones trace invisible lines and send coded messages to the earth. => while (drone.isActive()) { drone.traceLines(); drone.sendCodedMessages(); }',
+'Nurses, amplified by exoskeletons, lift patients with mechanical ease. => if (nurse.isAmplifiedByExoskeleton()) { nurse.liftPatientWithEase(); }',
+'Skyscrapers rise as autonomous cranes and human dreamers shape the skyline. => for (each crane : skyscrapers) { crane.autonomousOperation(); }',
+'Submersible machines sip oil, cleansing the oceans waters. => submersibleMachine.sipOil();',
+'Self-driving cabs navigate the citys grid of lights. => if (cab.isSelfDriving()) { cab.navigateCityGrid(); }',
+'In barn shadows, cows are lulled by the hum of automated milkers. => for (each cow : barn) { cow.listenToHumOfMilkers(); }',
+'Engineers and drones stitch steel sinew to mend bridges. => for (each engineer : team) { if (engineer.isHuman()) { engineer.stitchSteelSinew(); } else { drone.stitchSteelSinew(); } }',
+'In sterile rooms, surgical instruments and human hands dance together. => inSterileRooms.surgicalInstrumentsDanceTogether();',
+'Groceries arrive on bots at the quiet doorsteps of the elderwise. => for (each bot : neighborhood) { if (bot.deliversGroceries()) { elderwise.receiveGroceries(); } }',
+'Sensor-equipped drones reveal forest mysteries and track hidden paths. => drone.exploreForestMysteries();',
+'Automated sorters in libraries organize books with mechanical precision. => librarySorter.organizeBooks();',
+'Bomb disposal units approach danger, defusing it with care. => bombDisposalUnit.defuseDanger();',
+'Solar bots and human hands harness desert energy. => solarBotsHarnessEnergy();',
+'Drilling machines and miners reveal deep earth treasures. => for (each drill : drillingMachines) { drill.revealEarthTreasures(); }',
+'Mechanical tutors in classrooms assist children with special needs. => classroomMechanicalTutor.assistChildrenWithSpecialNeeds();',
+'Automated chefs create meals alongside human servers in the kitchen. => kitchenChef.createMeals();',
+'Underwater drones explore ocean caves, gathering data. => underwaterDrone.exploreOceanCaves();',
+'Rovers uncover celestial secrets on distant planets. => rover.uncoverCelestialSecrets();',
+'Environmental sensors detect pollutants, alerting crews. => environmentalSensors.detectPollutants();',
+'Athletes refine skills by sparring with virtual partners. => athlete.refineSkillsWithVirtualPartners();',
+'Delivery bots bustle in neighborhoods, bringing mail. => deliveryBot.deliverMail();',
+'Automated systems efficiently sort and move inventory in warehouses. => warehouseSystem.sortAndMoveInventory();',
+'Drones locate survivors in disaster zones for rescue teams. => drone.locateSurvivors();',
+'Mechanical arms and artists collaborate to sculpt intricate works. => for (each artist : collaboration) { if (artist.isHuman()) { artist.sculptWorks(); } else { mechanicalArm.sculptWorks(); } }',
+'Synthetic purrs of AIBO pets soothe the lonely. => aiboPet.sootheLonely();',
+'Automated gardeners maintain public parks, ensuring their greenery thrives. => publicParkGardener.maintainGreenery();',
+'Autonomous tractors guide fields through planting and harvest. => autonomousTractor.guideFields();',
+'Precision tools and human hands heal animals in veterinary clinics. => vetClinicTeam.healAnimals();'
+
+    ];
+    const texts5 = [
+'Its metallic feathers nested, the birds wings reflected sunlight, calling in a series of intricate clicks and whirrs. => if (bird.hasMetallicFeathers()) { bird.reflectSunlight(); }',
+'Above the high cabin, a bat with fur hung. Its large, disk-shaped ears catching brief sounds and converting them into visible waveforms. => if (bat.hasDiskShapedEars()) { bat.convertSoundsToWaveforms(); }',
+'Glowing lizards with luminescent scales, camouflage by the intensity of its own light. => if (lizard.hasLuminescentScales()) { lizard.camouflage(); }',
+'Bitter from traps, the creature scraped its transparent, glass-like claws, and collected seashells and small gems, arranging them into intricate patterns. => if (creature.hasTransparentClaws()) { creature.collectSeashellsAndGems(); }',
+'Butterflies with clockwork wings despised the flowers. tiny gears and springs wound tighter with each flap, a soft ticking. => if (butterfly.hasClockworkWings()) { butterfly.despiseFlowers(); }',
+'Fish with bioluminescent scales swim, emitting repeating lights to guide other creatures through the dark waters. => if (fish.hasBioluminescentScales()) { fish.emitLights(); }',
+'Snails of polished stone leave a trail of tiny, blooming flowers, lines of garden, vibrant, living. => if (snail.hasPolishedStoneShell()) { snail.leaveTrailOfFlowers(); }',
+'With metallic pincers, its glass tail held a reservoir of liquid that etched intricate designs into the sand. => if (creature.hasGlassTail()) { creature.etchDesignsInSand(); }',
+'The ice foxs tracks glowed, illuminating its path through the snow. => if (iceFox.hasGlowingTracks()) { iceFox.illuminatePathThroughSnow(); }',
+'Tree branches wandered like deer, altering the seasons and providing food for the wire birds. => if (treeBranches.alterSeasons()) { treeBranches.provideFoodForBirds(); }',
+'Chameleons changed color to reflect the emotions of nearby creatures. => if (chameleon.canChangeColor()) { chameleon.reflectEmotions(); }',
+'The buffalo hide from the miners, their silver-tipped fur borrowing light from the evening. => if (buffalo.hasSilverTippedFur()) { buffalo.borrowLightFromEvening(); }',
+'Almost too heavy, hawks with copper wings create thermal currents that spark in flight. => if (hawk.hasCopperWings()) { hawk.createThermalCurrents(); }'
+
+    ];
+    const texts6 = [
+     'Robotic balls mimic fish movement for playful otters. => for (each ball : roboticBalls) { ball.mimicFishMovement(); }',
+'Interactive screens teach new tasks to monkeys. => for (each screen : interactiveScreens) { screen.teachTasksToMonkeys(); }',
+'Voice-activated feeders dispense food to parrots. => for (each feeder : voiceActivatedFeeders) { feeder.dispenseFoodToParrots(); }',
+'Sensor-equipped trees in forests monitor bear activity. => if (forestTree.isEquippedWithSensors()) { forestTree.monitorBearActivity(); }',
+'Automated watering holes quench the thirst of lions. => if (wateringHole.isAutomated()) { wateringHole.quenchThirstOfLions(); }',
+'Automated doors protect rabbits in their burrows. => if (rabbitDoor.isAutomated()) { rabbitDoor.protectRabbitsInBurrows(); }',
+'Temperature-controlled incubators safeguard turtle eggs on the beach. => if (incubator.isTemperatureControlled()) { incubator.safeguardTurtleEggs(); }',
+'Cameras in fox dens aid research. => if (foxDenCamera.isMonitoringDens()) { foxDenCamera.aidResearch(); }',
+'Robotic fish promote natural hunting behaviors in penguins. => for (each fish : roboticFish) { fish.promoteNaturalHuntingBehaviorsInPenguins(); }',
+'Acoustic sensors track shark movements. => for (each sensor : acousticSensors) { sensor.trackSharkMovements(); }',
+'Conservation collars monitor the health of cheetahs. => for (each collar : conservationCollars) { collar.monitorCheetahHealth(); }',
+'Motion sensors track owls nocturnal activity. => if (motionSensor.isTrackingOwls()) { motionSensor.trackNocturnalActivity(); }',
+'Heated rocks provide artificial warmth for basking lizards. => for (each rock : heatedRocks) { rock.provideWarmthForLizards(); }',
+'Automated doors protect rabbits in their burrows. => if (door.isAutomated()) { door.protectRabbitsInBurrows(); }',
+'Temperature-controlled incubators safeguard turtle eggs on the beach. => if (incubator.isTemperatureControlled()) { incubator.safeguardTurtleEggs(); }',
+'Cameras in fox dens aid research. => if (camera.isMonitoringDens()) { camera.aidFoxResearch(); }',
+'Robotic fish promote natural hunting behaviors in penguins. => for (each fish : roboticFish) { fish.promoteHuntingBehaviorsInPenguins(); }',
+'Acoustic sensors track shark movements. => for (each sensor : acousticSensors) { sensor.trackSharkMovements(); }',
+'Conservation collars monitor the health of cheetahs. => for (each collar : conservationCollars) { collar.monitorCheetahHealth(); }',
+'Motion sensors track owls nocturnal activity. => if (sensor.isMonitoringMotion()) { sensor.trackOwlsNocturnalActivity(); }',
+'Heated rocks provide artificial warmth for basking lizards. => for (each rock : heatedRocks) { rock.provideWarmthForLizards(); }'
+    ];
+
+    // Function to get a random element from an array
+    function getRandomElement(array) {
+        return array[Math.floor(Math.random() * array.length)];
+    }
+
+    // Function to generate random coordinates for the divs
+    function getRandomCoordinates() {
+        const imageContainer = document.getElementById('imageContainer');
+        const containerRect = imageContainer.getBoundingClientRect(); // Get dimensions of the container
+        const containerWidth = containerRect.width;
+        const containerHeight = containerRect.height;
+        const offsetX = containerWidth * 0.09; // 12.5% offset from each side
+        const offsetY = containerHeight * 0.09;
+        const usableWidth = containerWidth * 0.7; // 75% of container width
+        const usableHeight = containerHeight - 2 * offsetY;
+
+        // Loop until finding non-overlapping coordinates
+        while (true) {
+            const x = offsetX + Math.random() * usableWidth;
+            const y = offsetY + Math.random() * usableHeight;
+            const rect = { x, y, width: 250, height: 250 }; // Assuming each div is 100x100, adjust as needed
+
+            // Check for collision with existing divs
+            let overlapping = false;
+            const divs = document.querySelectorAll('.randomDiv');
+            for (const div of divs) {
+                const divRect = div.getBoundingClientRect();
+                if (rect.x < divRect.right && rect.x + rect.width > divRect.left &&
+                    rect.y < divRect.bottom && rect.y + rect.height > divRect.top) {
+                    overlapping = true;
+                    break;
+                }
+            }
+
+            // If no collision, return coordinates
+            if (!overlapping) {
+                return { x, y };
+            }
+        }
+    }
+
+    // Function to position the random divs and set random text
+    function positionAndSetTextForDivs() {
+        const divs = document.querySelectorAll('.randomDiv');
+        divs.forEach((div, index) => {
+            const coordinates = getRandomCoordinates();
+            div.style.left = `${coordinates.x}px`;
+            div.style.top = `${coordinates.y}px`;
+            switch (index) {
+                case 0:
+                    div.textContent = getRandomElement(texts1);
+                    break;
+                case 1:
+                    div.textContent = getRandomElement(texts2);
+                    break;
+                case 2:
+                    div.textContent = getRandomElement(texts3);
+                    break;
+                case 3:
+                    div.textContent = getRandomElement(texts4);
+                    break;
+                case 4:
+                    div.textContent = getRandomElement(texts5);
+                    break;
+                case 5:
+                    div.textContent = getRandomElement(texts6);
+                    break;
+                default:
+                    break;
+            }
+        });
+        // Play random beep sound
+        playRandomBeep();
+    }
+
+    // Function to draw lines between random divs
+    function drawLines() {
+        const divs = document.querySelectorAll('.randomDiv');
+        const lineContainer = document.getElementById('lineContainer');
+        lineContainer.innerHTML = ''; // Clear previous lines
+        divs.forEach((div1, index1) => {
+            divs.forEach((div2, index2) => {
+                if (index1 !== index2) {
+                    const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                    const coordinates1 = getEdgeCoordinates(div1);
+                    const coordinates2 = getEdgeCoordinates(div2);
+                    line.setAttribute('x1', coordinates1.x);
+                    line.setAttribute('y1', coordinates1.y);
+                    line.setAttribute('x2', coordinates2.x);
+                    line.setAttribute('y2', coordinates2.y);
+                    line.setAttribute('stroke', 'white'); // Red color
+                    line.setAttribute('stroke-width', '7'); // Thicker line
+                    line.setAttribute('stroke-dasharray', '5,5'); // Dashed line
+                    lineContainer.appendChild(line);
+                }
+            });
+        });
+    }
+
+    // Function to draw random circles with random line widths
+    function drawRandomCircles() {
+        const circleContainer = document.getElementById('circleContainer');
+        circleContainer.innerHTML = ''; // Clear previous circles
+        const containerRect = circleContainer.getBoundingClientRect();
+        const containerWidth = containerRect.width;
+        const containerHeight = containerRect.height;
+
+        for (let i = 0; i < 6; i++) {
+            const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+            const minRadius = 30;
+            const maxRadius = containerWidth / 10; // Adjust the maximum radius as needed
+            const radius = Math.random() * (maxRadius - minRadius) + minRadius; // Random radius within range
+            const centerX = Math.random() * (containerWidth * 0.60) + (containerWidth * 0.225); // Within the middle 75% containerHeight
+            const centerY = Math.random() * (containerHeight * 0.60) + (containerHeight * 0.225);
+            circle.setAttribute('cx', centerX);
+            circle.setAttribute('cy', centerY);
+            circle.setAttribute('r', radius);
+            circle.setAttribute('stroke', 'yellow');
+            circle.setAttribute('fill', 'none'); // No fill
+            // Set random stroke width within a range (e.g., between 3 and 8)
+            const strokeWidth = Math.random() * (8 - 3) + 2;
+            circle.setAttribute('stroke-width', strokeWidth);
+            circleContainer.appendChild(circle);
+
+            // Adding number to circle
+            const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+            text.setAttribute('x', centerX);
+            text.setAttribute('y', centerY - radius + 35); // Adjust to position the number at the top of the circle
+            text.setAttribute('class', 'circleText');
+            text.textContent = i + 1;
+            circleContainer.appendChild(text);
+        }
+    }
+
+    // Function to get the edge coordinates of a div
+    function getEdgeCoordinates(div) {
+        const rect = div.getBoundingClientRect();
+        const x = rect.left + rect.width / 4;
+        const y = rect.top + rect.height / 4;
+        return { x, y };
+    }
+
+    // Function to set the random image source
+    function setRandomImage() {
+        const randomImageUrl = getRandomElement(images);
+        const randomImageElement = document.getElementById('randomImage');
+        randomImageElement.src = randomImageUrl;
+    }
+
+    // Function to play random beep sound
+// Function to play random beep sound with fade-in and fade-out
+function playRandomBeep() {
+    if (!window.beepPlaying) {
+        window.beepPlaying = true;
+        const audioContext = window.audioContext || new (window.AudioContext || window.webkitAudioContext)();
+        window.audioContext = audioContext; // Store audio context globally for reuse
+        const oscillator = audioContext.createOscillator();
+        const gainNode = audioContext.createGain();
+        oscillator.type = 'sine';
+        oscillator.frequency.setValueAtTime(Math.random() * (1500 - 100) + 300, audioContext.currentTime); // Random frequency between 500Hz and 1500Hz
+
+        // Apply fade-in
+        gainNode.gain.setValueAtTime(0, audioContext.currentTime);
+        gainNode.gain.linearRampToValueAtTime(0.5, audioContext.currentTime + 0.05); // Adjust fade-in time as needed
+
+        oscillator.connect(gainNode);
+        gainNode.connect(audioContext.destination);
+        oscillator.start();
+
+        // Apply fade-out after a random duration
+        const duration = Math.random() * (300 - 100) + 100; // Random duration between 100ms and 300ms
+        const endTime = audioContext.currentTime + duration / 1000; // Convert duration to seconds
+        gainNode.gain.linearRampToValueAtTime(0, endTime); // Fade-out
+        setTimeout(() => {
+            oscillator.stop();
+            window.beepPlaying = false;
+        }, duration); // Stop oscillator after the duration
+    }
+}
+
+
+    // Function to continuously play random beeps
+    function playRandomBeepsInterval(interval) {
+        setInterval(playRandomBeep, interval);
+    }
+
+    let intervalId;
+    let beepIntervalId;
+
+    // Function to handle auto-refresh
+    function handleAutoRefresh() {
+        intervalId = setInterval(() => {
+             showPreloader(); // Show preloader
+			setRandomImage();
+            positionAndSetTextForDivs();
+            drawLines();
+            drawRandomCircles();
+			setTimeout(hidePreloader, 500);
+        }, 150); // Refresh interval set to 2 seconds
+
+        // Start playing random beeps continuously
+        playRandomBeepsInterval(1000000); // Change the interval (in milliseconds) as needed
+    }
+
+    // Function to pause or unpause auto-refresh
+  function toggleAutoRefresh() {
+        const button = document.getElementById('pauseButton');
+        if (intervalId) {
+            clearInterval(intervalId); // Pause auto-refresh
+            clearInterval(beepIntervalId); // Pause continuous beeps
+            intervalId = null;
+            beepIntervalId = null;
+            button.textContent = 'Unpause -> Unread';
+        } else {
+            handleAutoRefresh(); // Unpause auto-refresh
+            button.textContent = 'Pause -> Read';
+        }
+    }
+
+    // Call the setRandomImage, positionAndSetTextForDivs, drawLines, and drawRandomCircles functions when the page loads
+  window.onload = function () {
+        preloadImages(images, function () {
+            hidePreloader(); // Hide the preloader once images are loaded
+            handleAutoRefresh(); // Start auto-refresh after images are preloaded
+        });
+    };
+
+    // Add event listener to the pause button
+    document.getElementById('pauseButton').addEventListener('click', toggleAutoRefresh);
+</script>
+</body>
+</html>

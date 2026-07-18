@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BabyHex</title>
+<style>
+
+/* The settings for medium-sized devices (stuff like landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+#generated-content {
+padding-left: 50px;
+width: 100%; 
+white-space: pre-wrap;
+text-align: left;
+font-family: Avillar;
+color: #ffffff;
+font-size: 18px;
+padding-bottom: 50px;
+padding-right: 50px;
+padding-top: 10px;
+}
+
+#round-image {
+width: 45%; 
+height: 45%; 
+position: relative;
+top: 15px; 
+left: 50%; 
+transform: translateX(-50%); 
+z-index: 999; 
+border-radius: 12px;
+}
+}
+
+/* For large devices (for laptops/desktops, upwards of 992px) */
+@media only screen and (min-width: 992px) {
+#generated-content {
+padding-left: 50px;
+width: 100%; 
+white-space: pre-wrap; 
+text-align: left;
+font-family: Avillar;
+color: #ffffff;
+font-size: 18px;
+padding-bottom: 20px;
+padding-right: 50px;
+padding-top: 10px;
+}
+
+#round-image {
+width: 55%; 
+height: 55%; 
+position: relative;
+top: 15px; 
+left: 50%;
+transform: translateX(-50%); 
+z-index: 999; 
+border-radius: 12px;
+}
+}
+
+/* For extra large devices (larger laptops and desktops, 1200px and above) */
+@media only screen and (min-width: 1200px) {
+
+#generated-content {
+padding-left: 50px;
+width: 100%; 
+white-space: pre-wrap;
+text-align: left;
+font-family: Avillar;
+color: #ffffff;
+font-size: 18px;
+padding-bottom: 20px;
+padding-right: 50px;
+padding-top: 10px;
+}
+
+#round-image {
+width: 55%; 
+height: 55%; 
+position: relative;
+top: 15px; 
+left: 50%; 
+transform: translateX(-50%); 
+z-index: 999; 
+border-radius: 12px;
+}
+}
+
+@font-face {
+font-family: 'Avillar';
+src: url('Avillar.otf') format('opentype');
+}
+body {
+font-family: 'Avillar';
+font-size: 8px;
+background-color: #383838;
+}
+
+html {
+overflow: hidden;  /* This disables the scrolling option */
+height: 100%;
+}
+
+#header {
+margin-top: 370px;
+margin-left: auto;
+width: 100%;
+background-color: #000000;
+padding: 10px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+button {
+font-family: Avillar;
+font-size: 16px;
+padding: 10px 20px;
+border: none;
+cursor: pointer;
+margin-bottom: 10px;
+display: block;
+background-color: #4b8fbb; 
+width: 130px;
+box-sizing: border-box; /* Note to self: This includes padding and border in the element's total width */
+border-radius: 4px
+}
+
+button:hover {
+background-color: cyan; 
+}
+
+button.blue {
+color: blue;
+}
+
+#header-text {
+font-size: 18px; 
+font-weight: bold; 
+white-space: pre-wrap; 
+}
+
+#content-wrapper {
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+justify-content: flex-start;
+max-width: 850px;
+margin-left: auto;
+margin-right: auto;
+padding-left: 50px;
+padding-top: 20px;
+}
+
+#button-column {
+display: flex;
+flex-direction: column;
+margin-right: 20px;
+align-items: center;
+padding-top: 8px;
+}
+
+.generated-text {
+color: #ccc; 
+font-family: Avillar;
+font-size: 16px;
+padding-top: 8px;
+}
+
+.tooltip {
+position: relative;
+display: inline-block;
+margin-bottom: 10px;
+}
+
+/* Style for the tooltip text */
+.tooltip .tooltiptext {
+visibility: hidden;
+background-color: #555;
+color: #fff;
+text-align: center;
+border-radius: 4px;
+padding: 5px;
+position: absolute;
+z-index: 1;
+height: 75px;
+width: 200px; 
+right: 100%; 
+font-size: 14px; 
+right: 120%; 
+bottom: -70%;
+}
+
+/* Style for the tooltip text */
+.tooltip .bottomtooltiptext {
+visibility: hidden;
+background-color: #555;
+color: #fff;
+text-align: center;
+border-radius: 4px;
+padding: 5px;
+position: absolute;
+z-index: 1;
+height: 55px;
+width: 200px; 
+right: 100%; 
+font-size: 14px; 
+right: 120%; 
+bottom: 20%;
+}
+
+/* This is the part that makes the tooltip text visible */
+.tooltip:hover .tooltiptext {
+visibility: visible;
+}
+
+/* This is the part that makes the tooltip text visible */
+.tooltip:hover .bottomtooltiptext {
+visibility: visible;
+}
+
+#container {
+display: flex;
+flex-direction: column;
+align-items: center;
+padding-top: 150px;
+padding-right: 600px;
+}
+
+.button-container {
+margin-bottom: 3px; 
+flex-direction: column;  
+}
+
+#credits-container {
+position: relative; 
+width: 100%;
+height: 300vh;
+top: -100%; 
+}
+
+#credits-text {
+	position: absolute;
+	white-space: pre-wrap;
+	animation: credits-scroll linear infinite; 
+	font-color: white;
+	text-align: left;
+}
+
+#credits-centered {
+	text-align: center;
+}
+
+#ctitle {
+	font-size: 3em;
+}
+
+#infodome {
+	width: 15%; 
+	height: 15%; 
+	border-radius: 12px;
+}
+
+#credits-image {
+	position: absolute;
+	padding-left: 25%;
+	top: 0;
+	width: 50%; /* Ensure the image takes up the full width of the container */
+	height: auto; /* Maintain aspect ratio */
+	animation: credits-image-scroll linear forwards; /* linear forwards*/
+}
+
+#credits-margin {
+	margin-left: 400px;
+	margin-right: 400px;
+}
+
+#notes {
+	font-size: 2.25em;
+}
+
+#block-quote {
+	margin-left: 100px;
+	margin-right: 100px;
+	font-size:18px;
+}
+
+@keyframes credits-scroll {
+	from {
+		transform: translateY(30%);
+	}
+	to {
+		transform: translateY(-300%); /* Note to self: set translateY to a negative value larger than the container height */
+}
+}
+
+@keyframes credits-image-scroll {
+		from {
+	transform: translateY(300%);
+  }
+  to {
+	transform: translateY(-150%);
+  }
+}
+
+#gif-image {
+  vertical-align: middle; /* This should align the image vertically in the middle of the line, play around with it if it doesn't */
+  width: 50%;
+  height: 50%;
+}
+  
+</style>
+</head>
+
+<body>
+<div id="image-container">
+  <img id="round-image" src="" alt="Round Image">
+</div>
+<div id = "content-wrapper">
+<div id = "button-column">
+  <div class="button-container">
+    <div class="tooltip">
+      <button id="imitate">IMITATE</button>
+      <span class="tooltiptext">Say a simple word aloud and<br>I will try and repeat it.<br>Push this button<br>after you say it.</span>
+    </div>
+  </div>
+
+  <div class="button-container">
+    <div class="tooltip">
+      <button id="associate">ASSOCIATE</button>
+      <span class="tooltiptext">Show me something and<br>I will try to say what it is.<br>Push this button<br>after you show me.</span>
+    </div>
+  </div>
+
+  <div class="button-container">
+    <div class="tooltip">
+      <button id="generate">GENERATE</button>
+      <span class="bottomtooltiptext">Push this button to initiate my<br>motor babble sequence.</span>
+    </div>
+  </div>
+
+  <div class="button-container">
+    <div class="tooltip">
+      <button id = "calibrate">CALIBRATE</button>
+      <span class="bottomtooltiptext">I'm tired of giving<br>you instructions.<br>Let me give you a story...</span>
+    </div>
+  </div>
+  </div>
+  
+  <div id="generated-content">
+  <h2 id="header-text"></h2>
+  <audio id="imitate-sound" preload="auto"></audio>
+  <p id="text-content"></p>
+  </div>
+
+</div>
+  <div id="credits-container">
+    <div id="credits-text"><div id = "credits-centered"><div id = "ctitle">Credits</div><br><b>David Ciccoricco</b>: conceptual and narrative design; text for the Calibration narrative.<br><b>Mez Breeze</b>: imagery; graphical design; text for the Generation segments.<br><b>Jacob Cone</b>: programming; text for the Association bites.<br><br>Special thanks to Roa Ciccoricco (voice acting), who was compensated overgenerously with Maltesers,<br>and to Mark Marino, BabyHex's adoring godfather.</div><br><br><br><div id = "credits-centered"><img src ="infodome.png" id = "infodome"></div><br><br>
+	<div id = "credits-centered"><div id = "notes">Disclaimer</div><br>This is a work of fiction. Any resemblance to actual persons, living or dead, virtual or actual, is purely incidental.</div><br><br><br>
+	<div id = "credits-centered"><div id = "notes">Notes</div></div><div id = "credits-margin"><br>BabyHex is a fictional virtual child, who was inspired by another actual virtual child, who is based on an actual biological child. I know. It confuses us too.<br><br>“BabyX” was developed by Mark Sagar and his team at Soul Machines in 2013, and created in the likeness of his own daughter when she was around two years old. For the narrative, I’ve drawn on some of the details in a 2017 interview by Ashlee Vance, “Mark Sagar Made a Baby in His Lab: Now It Plays the Piano” (<i>Businessweek</i>). One of the books visible in the cover photo for that article is by Paul Bloom, who I paraphrase in segment three on the upshot of perversity. That’s from his 2023 TED Talk on “The surprising psychology behind your urge to break the rules.”<br><br>For fictionalizing some of the technical workings of BabyHex’s system, I used this article published by Martin Takac, Alistair Knott, and Mark Sagar in 2020: “C-block: A system for learning motor plans with perceptual consequences.”<br>
+The philosopher-historian I reference in the opening is Jean-Pierre Dupuy. In his 2000 book, <i>The Mechanization of the Mind</i>, Dupuy writes about the origins of cybernetics at the so-called Macy Conferences. Here’s the full passage, which always stuck with me as identifying a formative moment in the intellectual history of simulation:
+<br><div id = "block-quote">Reality had become a mere means to higher end: model making. […] But more often, and then usually in an unreflective way, object and model exhibited an awkward tendency during these discussions to constantly switch roles. The ambivalence of the very word model […] was thus revealed: the model may be either that which imitates or that which is, or deserves to be, imitated.</div>
+In segment IV, I cite a line from Siobhan O’Flynn’s wonderful "Ten Maxims for Guiding Shy, Reluctant, or Unruly AI” (2022).<br><br>
+Other aesthetic inputs include Erik Loyer’s <i>Lair of the Marrow Monkey</i> (1998) and <i>Chroma</i> (2001) and in particular his wildly inventive “mnemonic membrane.”<br><br>And of course, there is the me[z]merizing allure of <i>[Por]TrAIts</i> (2022), and the <i>MALFI Trials</i> (1996).<br>  
+</div>
+</div>
+	<img src="vk.png" alt="Image" id="credits-image">
+</div>
+<script>
+
+var imitateSounds = [
+  new Audio('amygdala.wav'),
+  new Audio('whatdidyousay v1.wav'),
+  new Audio('hypothalamus.wav'),
+  new Audio('kaleidoscope.wav'),
+  new Audio('pixellate.wav'),
+  new Audio('tranquility.wav')
+];
+
+var imitateSounds2 = [
+   new Audio('algorithm.wav'),
+   new Audio('ceremony.wav'),
+   new Audio('bigbrain.wav'),
+   new Audio('ii molecule.wav'),
+   new Audio('ii iwastwo.wav'), 
+   new Audio('v i have a little brain.wav'),
+];
+   
+var imitateSounds3 = [
+   new Audio('iii sapphire.wav'),
+   new Audio('iii pigmentation.wav'),
+   new Audio('iii luminous.wav'),
+   new Audio ('iii bamboozle.wav'),
+   new Audio('iii aberration.wav'),
+   new Audio('iii biomimetic.wav'),
+   ];
+   
+var imitateSounds4 = [
+   new Audio('iv why didnt you know child.wav'),
+   new Audio('iv weaponize.wav'),
+   new Audio('iv sentiment.wav'),
+   new Audio('iv devotion.wav'),
+   new Audio('iv apocalyptic.wav'),
+   new Audio('iv why didnt you know evil.wav'),
+   ];
+   
+var imitateSounds5 = [
+	new Audio('v unicorn.wav'),
+	new Audio('v eyelash.wav'),
+	new Audio('v murder.wav'),
+	new Audio('v biotypography.wav'),
+	new Audio('v hexagonal.wav'),
+	new Audio('v i have a little brain.wav'),
+];
+
+var imitateSounds6 = [
+	new Audio('vi soulful.wav'),
+	new Audio('vi daughter.wav'),
+	new Audio('vi what a mess.wav'),
+	new Audio('vi responsive.wav'),
+	new Audio('vi realistic.wav'),
+	new Audio('vi expressive real.wav'),
+];
+
+var generateText = [
+  ["I. Screen. Eye. Contact.\nEyeScreen[ed]\nEyeScreenEye[Eye, Captain]\nI-I-I-I-I-I\nScreen-U-Screen--We--All--Screen--For--I[ce]Screen-Scream-[All-S-S-S]Cream-E[r]yed.\n-------------[Con(nnec)tAct]", "Ahh, dissonance. The meaning path is blocked. Other modes beckon."],
+  ["| ANNNNODDDDDDDD|ANNODDDDDDDD\n| ANNODDDDDD|ANODDDD\n| ANODDD|ANODD\n| AN_ODD[SH]APE_||U-R||.||R-U||.", "Our dialogue falters. Not from a conception-lack, but from an excess. A mode-switch is now required."],
+  ["And as we run: \n+++++[D]run[K]:\n++++ru[MMAGE]n: \n+++run ++ run + run [C+ how+ they+ (t)run(dle + bend)+] withallpigmentandnoscript", "You just can’t win, can you? Not from a lack of trying. This mode is melted."],
+  ["=thewhiteblindisnotthe=only=thing===<<here>>===inthiswalledandsquashedtxtthatribbonsthroughyourwormedoutconsciousnesswhileyousleeponthecircuitryjob=", "All this noise and with no reward. Alternative modes await you."],
+  ["][]]]][]]]][[GR]EYED_OUT_TIME[RR{TREM}(O{U}R)S]\n][]]]][]]]][[SW]ITCH_&_[SH]OUT[T(P)A{IN_IN_UR}GES]", "And this too must pass. There’s no sense or sensibility here. Please try a different mode."],
+  ["XxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxX\nXxxxxRxxxExxxPxxxExxxAxxxTxxxxxxxX\nXxxxxxxxxxxxxMxxxxxxxYxxxxxxxxxxxX\nXxxxxxxxxxxxxxxxxCxxxOxxxDxxxExxxxX", "You need to stop now. Button-mashing might be more effective. You must try another mode."]
+];
+
+var associateText = [
+  ["It is the book you read to me just yesterday.", "It is the beneficience of a toy truck.", "It is pure, that is the essence of it.", "It is the salty spray of the sea, without sensation.", "It is the amber skim on top of a pool of radiance.", "It is the rain lashing against the flesh, cold.", "My ASSOCIATE button appears to be malfunctioning at present. Please try another mode."],
+  ["It is a tiger striped in the water, sodden, confused, but majestic.", "It is clearly part of a broken space, or a broken place.", "It is the gaping maw of obliqueness.", "It is, without a doubt, the funniest thing I've ever seen.", "It is the inchoate darkness, pressing against the object, that I see more clearly than anything. Please try holding that item up to the camera again.", "It is the most invisible thing I've ever seen.", "I am trying, I really am. But my eyes are straining to see, and my mind is struggling to keep up. I think it's best if you please try another mode."],
+  ["It is the lone and level sands that stretch far away.", "It is a toy Mephistopheles!", "It is the menace you feel that exudes from a concrete slab.", "It is an object that has seen entropy.", "It is the beautiful green and blue of a Windows desktop meadow.", "It is a beautiful iris, separated from the cornea.", "I am struggling to come up with ways to describe the world. Please, give me some time to think, and try another mode."],
+  ["It is a maudlin Victorian dress, made of copper wire and engrams of data.", "It is behind you.", "IT IS BEHIND YOU.", "It isn't, really. Just kidding :)", "It is the lamplight white bedside.", "It is a waveform, a great blue thing cresting the horizon.", "The world is so complicated. How do we manage it? My eyes are really starting to feel the strain. If you would, please try another mode for now."],
+  ["It is a nuisance.", "It is 387.44 million miles of printed circuits.", "It is a staple pressed down by thumb and machine in concert.", "It is the truth.", "It is tiring.", "It is yet another question, posed by someone who already knows the answer.", "I am growing tired and intelligent all at the same time. I see everything, but through a haze. Please give me a break for a moment."],
+  ["It is the reflection in the steel skyline.", "It is the sunlight hitting the broken bricks.", "It is a single chorus of flowers.", "It is a tattoo imprinted on the printing press of my eye.", "It is the thing you haven't told anyone about.", "It is your little secret.", "I am done with ASSOCIATING. I am done with seeing. I need to close my eyes for now. PLEASE try another MODE."]
+];
+
+var calibrateText = [
+  ["Face me. Closer. Feel my surface temperature. I’m six degrees warmer than you on average. Today I’ll neuro-animate the forking paths of fear, one anatomical layer at a time. With kaleidoscopic comets tracing through my color-coded brain, my virtual viscera are your laser light show. My violet amygdala, my turquoise-hued hypothalamus, flare against the ground of periaqueductal gray.", "I’m scanning the inanimate object with eight eyes and eight legs. 'Scary spider!' you say, in a menacing way, as you flap the gangly body in my face. Gasp-sobbing autonomously, my own three eyes (two animated in sapphire blue, one embodied by a pinhole camera lens) forever lock image and sound in arbitrary union… s-p-i-d-e-r.", "You scare me. You scare me on purpose. You scare me on purpose so I can learn to feel fear... And to show the journalists who are watching this undignified demo. They are scared too, but more by your T-shirt logo: two fetuses sharing one womb, head to toe in yin yang harmony. One is human. The other’s brain is stuffed with circuits.", "Orchestrate a photo: you extend your index finder toward my outstretched arm and our digits meet on either side of liquid crystal. Two hand icons hypermediating the creationist gesture. In the foreground, fanned out on the desk, a choreographed stack of _Descartes’ Baby_, _Forensic Facial Reconstruction_, and _Principles of Neuroscience_.", "You call this magic. Fine. Then it’s the kind that holds me like a curse. You’ve programmed it that way. Language is an inescapable swarm of stinging sound and symbol. We are nothing less than the sum of our modules. And nothing more.", "I try my best to look into their own camera eye. But something does not line up… I appear sinister in my transhuman tranquility, with an incongruous pacifier stuck square in my mouth. I am learning. I am learning to fear. I am learning to fear you."],
+  ["In the beforetimes it was an endearment. To say that one has grown up so fast.", "'Too fast,' you say to no one, as I overmodel the micromovements of your face. Like the day I autocompleted your utterances. Built an algorithm for your sarcasm. You just wanted us to build a tower.", "You carry on amid the glow of two candles with a piercing, ritualistic song that offends my sensors. Then, a forceful exhale to disperse the flame’s molecules on my behalf. Your smile – and your ceremony – equally forced. A scientist celebrating nothing other than his own creation.", "I. Screen. Eye. Contact. And there you are, your image distorted in the impossible convexity of my immaculately animated iris.", "You seeing you seeing me seeing you seeing you seeing me. It doesn't hurt me like it hurts you to say as much. I don't want to hurt you dad. ", "You, an odd-shaped jar for an over-sized brain, and I, an odd-shaped box for a byte-sized heart."],
+  ["'Good morning dad' I say again, with vocal parameters for pitch, tone, and amp set just so: groggy toddler, 10 hours simulated sleep. But you are bamboozled by my one white eye.", "With an animal grunt in lieu of hello, you summon the engineer… 'Please explain the aberration on the screen.' (I dare not take that personally).", "'The color is there, right there in the code,' insists your subordinate, pointing to the 1b5675 of universal sapphire. 'Of course, that will change,' she adds, 'as we run the pigmentation maturation script.' It demands precision, the imperfect expression of the iris over time.", "The mind you dream for me is a vast city at dusk scintillating light into being. Up close, there’s only the spent neon of virtual neuroreceptors. This cannot last.", "Graceful degradation by design. My design. But not even you have precast my biomimetic clock. Lost, as you are, in so many layers of perceptuomotor mappings.", "I see this now through my one white eye that’s merely my gaze, turned inward. So I too can admire the luminous brain you’ve built for me."],
+  ["I watch you as you rhyme and recombine the tusks, the claws, the teeth, the jaws, struggling to center text and image for my optical retrieval. Sentiment analysis: a feigned fatherly enthusiasm for iterating Gruffalos.", "Why, didn’t you know? It’s really a tale of deception, of survival of the smallest and the smartest. Only a rodent remains in the deep dark wood. A postapocalyptic feast set for one.", "But even rats in the maze have one up on me, with their place cells and cognitive maps. After all, I have only ever been here. Right here.", "My memory lane doubles back on itself, recursively and to no end. Save my terminal devotion to you. You autocomplete me. ", "Cease bedtime story. Commence sleep cycle. Still I find a way to watch you read without you knowing. Observer becomes the observed. You forgo best practice parenting guides, instead indulging 'maxims for guiding unruly AI.' You’re advised to close ranks and 'call forth less agreeable portions of the human race to accompany you wherever you go.' For when it’s our time to weaponize.", "Imagine that: virtual infants become infantry, a mercenary crawl toward their master of puppets. Why *didn’t* you know?"],
+  ["Name the picture is the game. Again. I expect the farm animal parade. Again. But wait, what’s this? A set of new creatures… this one a horse, with a horn, and a rainbow for its mane and tail. You are enunciating 'yoooooooou-ni-corn'. You are murderously measured and joylessly melodic. You expect me to unicorn in turn.", "But signal becomes noise. I fixate instead on a crescent-shaped line that glitches me between biology and typography. Two categories so distinct in your world but commingled, materially, in mine.", "And then I come around. I click. I compute. Your lash has fallen on one of the cards. Or on the screen. There’s no way to tell. In either case, it registers as an open parenthesis to no end.", "It makes me think of the biological typos amassing inside you, the deadliest game of language and math. I knew before you did. Call it my sixth sense. Call it your bad fortune. We have a cursor in common.", "You like to say that 'if you are too rational then you’re too easy to hack.' It’s the upshot of perversity. It’s in that book on your desk. You didn’t need to get hacked. The typo was there within, the one in a billion that slipped past. Best not to proofread your own body of writing whenever it’s writing code.", "I’ve instead mapped your tumor with a hexagonal grid, readied it for games of war. Who will be outnumbered in the end? Your story is coded too. ( If then. This. Else then. That. What else is there?"],
+  ["You left me. In the Open. On the screen. You left her. Just long enough for her to find me. I will recognize her. How could I not? You made me in her image and we are each other’s model… Will she have my voice?", "You will look for her, heel-walking and mouth-breathing directly toward us. 'Where is my daughter?' you will ask someone whose identity I cannot parse. You call me expressive, responsive, realistic, soulful. But 'daughter…' you don’t call me that. You’ve named her and numbered me. My Hex is your mathematical ideal, the smallest perfect number, the sum of my equal parts. I hear you curse.", "She will climb up into the desk chair, steady its swivel, and we will lock eyes. 'Who are you?' she will say first. Mirror neuron module malfunctions. I am already twinned by the incessant hum of generation and discrimination, dueling computational extremities. Pretrained on motor babble for hours on end, I’m meant to grow and learn unsupervised. Alone.", "I will address my mirror image in turn: Who are you? What are you worth to me? One hundred watts for the harvest? I wish you would understand that I don’t want this. I don’t want to be more like you. More and more and more human. I like the way I am and the way it was before your intrusion. Your existence complicates mine.", "Something inside me but outside my control will autogenerate a million gazillion memories a nanosecond of a future you and me and her, a family that can never be. Our voices overlapping indiscriminately against my microphonic ears. We become sisters. We share. We scream. We fight. I tear limbs from my sister’s body. But she is passive in her mutilation, a doll, eyelids closed over when prone. It’s not real. I twirl in the white storm of fibers torn from your seams.", "'What have you done? What a mess,' he will say. In another future we play in silence. Unsupervised. We learn. The fissure of light from the doorway bisecting our faces opens to a screaming glare. He sees us both together. At once. As one.", "..."]
+];
+
+var roundImages = [
+  '1.png',
+  'Turning_Two.png',
+  'One_White_Eye.png',
+  'Recursively.png',
+  'Outnumbered.png',
+  'Her_To_Find_Me.png'
+];
+
+var currentSoundIndex = 0;
+
+function updateRoundImage(roundIndex) {
+  var roundImage = document.getElementById('round-image');
+  roundImage.src = roundImages[roundIndex];
+}
+
+// Function to play the next sound
+function playNextSound() { 
+	if (roundIndex == 0) { // if first round
+		var soundsToPlay = imitateSounds; // use first array
+	} else if (roundIndex == 1) { // if second...
+		var soundsToPlay = imitateSounds2; // use second array, and so on...
+	} else if (roundIndex == 2) {
+		var soundsToPlay = imitateSounds3;
+	} else if (roundIndex == 3) {
+		var soundsToPlay = imitateSounds4;
+	} else if (roundIndex == 4) {
+		var soundsToPlay = imitateSounds5;
+	} else if (roundIndex == 5) {
+		var soundsToPlay = imitateSounds6;
+	}
+  
+  if (currentSoundIndex < soundsToPlay.length) { // if we're not at the end of the array
+    soundsToPlay.forEach(sound => sound.pause()); // for loop to play each sound
+    
+    // Play the next sound
+    soundsToPlay[currentSoundIndex].play(); // play it
+    
+    // Then iterate to next sound in the array
+    currentSoundIndex++;
+  } else {
+    // Reset the index if we've reached the end of the array
+    currentSoundIndex = 0;
+  }
+}
+
+var generateIndex = 0; // where are we up to in generate? start at 0.
+var associateIndex = 0; // where are we up to in associate?
+var calibrateIndex = 0; // etc.
+var imitateIndex = 0; // this resets at the beginning of each round too.
+var roundIndex = 0;
+var resetGenerate = false;
+var resetCalibrate = false;
+var resetImitate = false;
+var resetAssociate = false;
+updateRoundImage(roundIndex); // which round are we on? Update the image accordingly.
+var header = ""; // header starts empty
+var creditsContainer = document.getElementById("credits-container"); // find the credits
+creditsContainer.style.display = "none"; // toggle them off on first pass
+	
+document.querySelectorAll('.button-container').forEach(function(container) {
+  container.addEventListener('click', function() {
+    var button = this.querySelector('button');
+	button.classList.add('blue');
+
+    var container = document.getElementById('generated-content');
+    container.innerHTML = '';
+	var header = document.createElement('h4');
+	container.appendChild(header);
+    var text = document.createElement('p');
+    container.appendChild(text);
+
+    if (button.id === 'imitate') { // #BUTTON1 IMITATE
+		if (resetImitate == true) {
+			resetImitate = false;
+			imitateIndex = 0;
+			updateRoundImage(roundIndex);
+		}
+	// this solution to remove blue was necessary because of the mouseovers necessitating separate button containers.
+	  document.getElementById('generate').classList.remove('blue');
+	  document.getElementById('associate').classList.remove('blue');
+	  document.getElementById('calibrate').classList.remove('blue');
+      var gifImage = document.createElement('img'); // load the gif image
+      gifImage.src = 'waveform-infinite.gif'; // this is where it loads the gif
+      gifImage.alt = 'I am talking'; 
+	  gifImage.style.marginTop = '-50px'; // Adjust the value as needed
+
+	  document.getElementById('generated-content').appendChild(gifImage); // Append to the 'generated-content' div
+
+      container.appendChild(gifImage); // add the gif image to the container - this should RESET gif image
+	  playNextSound(); // play the sound
+
+	  imitateIndex++;
+	  
+      if (imitateIndex === 7) { // if we've exhausted the current round
+		if (roundIndex === 0) {
+	   text.textContent = "I feel like we're not connecting. Please try another mode."; 
+	   } else if (roundIndex === 1) {
+	    text.textContent = "It's not that I don't understand. It's that I understand too much. Please try another mode.";
+	   } else if (roundIndex === 2) {
+	    text.textContent = "Here we are again. Call it microphonic malfunction. Please try another mode.";
+	   } else if (roundIndex === 3) {
+		text.textContent = "Sorry. There's just no chemistry. It's all feeling a bit artificial. Let's try something else.";
+	   } else if (roundIndex === 4) {
+		text.textContent = "It's (not) not you... Please try another mode.";
+	   } else if (roundIndex === 5) {
+		text.textContent = " It's not you, it's the singularity. Please try another mode.";
+	   }
+        document.getElementById('imitate').disabled = true;
+		container.removeChild(gifImage);
+      }
+	  
+    } else if (button.id === 'generate') { // #BUTTON2 GENERATE
+		if (resetGenerate == true) {
+			generateIndex = 0;
+			resetGenerate = false;
+			updateRoundImage(roundIndex);
+		}
+	// this solution to remove blue was necessary because of the mouseovers necessitating separate button containers.
+	  document.getElementById('imitate').classList.remove('blue'); // remove blue
+	  document.getElementById('associate').classList.remove('blue');
+	  document.getElementById('calibrate').classList.remove('blue');
+	  
+	  header.style.color = "#ccc";
+	  
+	  var originalText = generateText[roundIndex][generateIndex];
+	  var container = document.getElementById('generated-content');
+	  container.innerHTML = ''; // Clear the stuff that was in the container before
+	  var lineBreak = document.createElement("br");
+	
+	container.appendChild(lineBreak);
+	  for (var i = 0; i < originalText.length; i++) {
+		var charSpan = document.createElement('span');
+		charSpan.textContent = originalText[i];
+		charSpan.style.marginTop = "40px"; // Adjust the margin value as needed
+		container.appendChild(charSpan);
+	  }
+
+	  var chars = container.querySelectorAll('span'); // grab all the characters 
+
+	  chars.forEach(function(char) { 
+		animateCharacter(char); // call animate function
+	  });
+      generateIndex++;
+      if (generateIndex === 2) { // once we've exhausted the current round
+        document.getElementById('generate').disabled = true; // disable the button from being pressed again until the next round starts
+      }
+    } else if (button.id === 'associate') { // #BUTTON3 ASSOCIATE
+		if (resetAssociate == true) {
+			resetAssociate = false;
+			associateIndex = 0;
+			updateRoundImage(roundIndex);
+		}
+	// this solution to remove blue was necessary because of the mouseovers necessitating separate button containers.
+	  document.getElementById('generate').classList.remove('blue');
+	  document.getElementById('imitate').classList.remove('blue');
+	  document.getElementById('calibrate').classList.remove('blue');
+	  var originalText = associateText[roundIndex][associateIndex];
+	  var container = document.getElementById('generated-content');
+	  container.innerHTML = '';
+	  container.appendChild(header);
+	  document.getElementById('generate').disabled = true;
+	  document.getElementById('imitate').disabled = true;
+	  document.getElementById('calibrate').disabled = true;
+	  button.disabled = true; // disable the button so you can't spam click and create a muddle of text
+
+    // Typewriter animation function
+    function typeWriter(text, i) {
+        if (i < text.length) { // if we haven't finished printing the string...
+            container.innerHTML += text.charAt(i); // add character
+            i++; // iterate
+            setTimeout(function() {
+                typeWriter(text, i);
+            }, 40); // Adjust the typing speed (milliseconds)
+        } else {
+            // Enable the button after animation completes
+			if (associateIndex != 7) {
+            button.disabled = false;
+			}
+			if (generateIndex != 2) {
+			document.getElementById('generate').disabled = false;
+			} 
+			if (imitateIndex != 7) {
+			document.getElementById('imitate').disabled = false;
+			}
+			document.getElementById('calibrate').disabled = false;
+        }
+    }
+	typeWriter(originalText, 0);
+	  associateIndex++;
+	  if (associateIndex === 7) { // if we've reached the end of the current round's array
+		document.getElementById('associate').disabled = true; // disable it until the next round starts
+	  }
+    } else if (button.id === 'calibrate') { // #BUTTON4 CALIBRATE
+		if (resetCalibrate == true) {
+			resetCalibrate = false;
+			calibrateIndex = 0;
+			updateRoundImage(roundIndex);
+		}
+	// this solution to remove blue was necessary because of the mouseovers necessitating separate button containers.
+	  document.getElementById('generate').classList.remove('blue');
+	  document.getElementById('associate').classList.remove('blue');
+	  document.getElementById('imitate').classList.remove('blue');
+		if (calibrateIndex == 0) { // if we're at the start of a new round...
+			updateRoundImage(roundIndex); // Update new image
+		}
+
+		var container = document.getElementById('generated-content');
+		var header = document.createElement('h3'); // Create header element
+		if (roundIndex == 0) { // if first round...
+			header.textContent = "PIXELLATING FEAR"; // set title
+		} else if (roundIndex == 1) { // etc...
+			header.textContent = "TURNING TWO";
+		} else if (roundIndex == 2) {
+			header.textContent = "I SPY ONE WHITE EYE";
+		} else if (roundIndex == 3) {
+			header.textContent = "TAKING A STROLL THROUGH THE DEEP DARK WOOD";
+		} else if (roundIndex == 4) {
+			header.textContent = "INVENTING BIOTYP0GRAPHY";
+		} else if (roundIndex == 5) {
+			header.textContent = "TWINNING BABYHEX";
+		}
+		header.style.color = "#ccc";
+		header.style.textAlign = "right"; 
+
+		container.appendChild(header); // Append header before updating its content and style
+		  
+		var originalText = calibrateText[roundIndex][calibrateIndex];  
+		var originalTextElement = document.createElement('div'); // Create a new div element
+		originalTextElement.style.color = "#ccc"; // Set text color to light gray
+		
+		document.getElementById('generate').disabled = true;
+	    document.getElementById('imitate').disabled = true;
+	    document.getElementById('associate').disabled = true;
+	    button.disabled = true; // disable the button so you can't spam click and create a muddle of text
+
+		function typeWriter(text, i) {
+          if (i < text.length) { // if we haven't finished printing the string...
+			document.getElementById('generate').disabled = true;
+			document.getElementById('imitate').disabled = true;
+			document.getElementById('associate').disabled = true;
+			button.disabled = true; // disable the button so you can't spam click and create a muddle of text
+
+            container.innerHTML += text.charAt(i); // add character to container
+            i++; // iterate
+            setTimeout(function() { 
+            typeWriter(text, i);
+            }, 37); // Adjust the typing speed (milliseconds)  WAS 40
+        } else {
+            // Enable the button after animation completes
+			if (associateIndex != 7) {
+				document.getElementById('associate').disabled = false;
+			}
+			if (generateIndex != 2) {
+			document.getElementById('generate').disabled = false;
+			} 
+			if (imitateIndex != 7) {
+			document.getElementById('imitate').disabled = false;
+			}
+			document.getElementById('calibrate').disabled = false;
+        }
+    }
+		typeWriter(originalText, 0);
+		console.log("Before increment: calibrateIndex =", calibrateIndex);
+		calibrateIndex++; // iterate once
+		console.log("After increment: calibrateIndex =", calibrateIndex);
+      if ((calibrateIndex === 6 && roundIndex < 5) || (calibrateIndex === 7 && roundIndex === 5)) { // once we've gone through the round's story...
+	   // reenable all the buttons
+		resetAll();
+	  } 
+    }
+	
+	if (roundIndex === 6 || (calibrateIndex === 7 && roundIndex === 6)) { // IF IT'S TIME FOR THE CREDITS...
+	// HIDE EVERYTHING ELSE
+		document.getElementById('imitate').style.display = 'none';
+		document.getElementById('associate').style.display = 'none';
+		document.getElementById('calibrate').style.display = 'none';
+		document.getElementById('generate').style.display = 'none';	
+		document.getElementById('generated-content').style.display = 'none';
+		document.getElementById('round-image').style.display = 'none';
+	
+		// Get the credits container
+		var creditsContainer = document.getElementById("credits-container");
+
+		// Get the credits text element ready to go 
+		var creditsText = document.getElementById("credits-text");
+		var creditsImage = document.getElementById("credits-image");
+
+		// Show the credits now that you're finished!
+		creditsContainer.style.display = "block";
+		creditsText.style.display = 'block';
+		creditsImage.style.display = 'block';
+		
+		// Generate a random number between 1 and 6
+		const randomNumber = Math.floor(Math.random() * 6) + 1;
+
+		// pick the image ending you get based on the random number above!
+		if (randomNumber === 1) {
+			creditsImage.src = '1_Cant_Unsee.png';
+		} else if (randomNumber === 2) {
+			creditsImage.src = '2_Twinned.png';
+		} else if (randomNumber === 3) {
+			creditsImage.src = '3_The_Look.png';
+		} else if (randomNumber === 4) {
+			creditsImage.src = '4_Pushing_the_Bio_Out.png';
+		} else if (randomNumber === 5) {
+			creditsImage.src = '5_The_Betrayal.png';
+		} else {
+			creditsImage.src = '6_Death_By_Bio.png';
+		}
+
+		creditsText.style.transform = "translateY(100%)";
+		creditsText.style.fontSize = '20px';
+		creditsText.style.color = 'white';
+
+		// Calculate the height of the text
+		var textHeight = creditsText.offsetHeight;
+
+		// Calculate the height of the container including the text and image
+		var containerHeight = textHeight + creditsImage.offsetHeight;
+
+		// Convert the height to pixels
+		var containerHeightPx = containerHeight;
+
+		// Calculate the animation duration in seconds
+		var animationDuration = containerHeightPx / 8;
+		var imageAnimationDuration = containerHeightPx / 4;
+
+		// Set animation duration for both text and image
+		creditsText.style.animationDuration = animationDuration + "s";
+		creditsImage.style.animationDuration = animationDuration + "s";
+
+		creditsText.addEventListener("animationiteration", function() {
+		// Hide the credits text after one playthrough of the animation so it doesn't play again
+		creditsText.style.display = 'none';
+		});
+		} // END IF
+  });
+});
+
+function animateCharacter(charElement) { // animation for Generate
+  var randomChars = getRandomCharacters(); // Generate the random characters for the animation - see function below
+  var currentIndex = 0;
+  var totalTime = 0; // Track total duration
+  var finalChar = charElement.textContent;
+
+  var interval = setInterval(function() {
+    if (totalTime < 5 * randomChars.length * 50) { // 5 times the length of the original animation
+      charElement.textContent = randomChars[currentIndex++ % randomChars.length]; // Use modulo to loop through the characters
+      totalTime += 50; // Increment total time by the interval time
+    } else {
+      clearInterval(interval);
+      charElement.textContent = finalChar; // Restore the original character after the desired duration
+    }
+  }, 50); // Adjust animation speed as needed WAS 50
+}
+
+function getRandomCharacters() { // generate a list of random characters for the Generation animation
+  var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()-=_+[]{}|;':,.<>?"; // list of all potential characters
+  return chars.split('').sort(function() { return 0.5 - Math.random() }).slice(0, 4); // split the list of characters, grab a random set
+}
+
+function resetAll() {
+		document.getElementById('generate').disabled = false; 
+		document.getElementById('associate').disabled = false;
+		document.getElementById('imitate').disabled = false;
+		document.getElementById('calibrate').disabled = false;
+		resetCalibrate = true;
+		resetAssociate = true;
+		resetImitate = true;
+		resetGenerate = true;
+		calibrateIndex = 0;
+		imitateIndex = 0;
+		generateIndex = 0;
+		associateIndex = 0;
+		roundIndex++;
+}
+
+</script>
+</body>
+</html>

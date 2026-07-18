@@ -1,0 +1,759 @@
+[
+  {
+    "requirements": "PDF Reader",
+    "linkDescription": "Original pdf from the print artist book that accompanied the experience at the Biblioteque Nationale in Paris (32 p., .pdf)",
+    "index": 267,
+    "location": "200castles.pdf",
+    "linkText": "Download Book",
+    "url": "200-castles"
+  },
+  {
+    "requirements": "macOS",
+    "linkDescription": "Includes files necessary for a rebuild",
+    "index": 267,
+    "location": "Castles2015_iOS.zip",
+    "linkText": "Download Source code (macOS)",
+    "url": "200-castles"
+  },
+  {
+    "requirements": "PDF Reader",
+    "linkDescription": "Book in Arabic (314 p., .pdf)",
+    "index": 143,
+    "linkText": "Download Book",
+    "location": "قاموس الثورة.pdf",
+    "url": "a-dictionary-of-the-revolution"
+  },
+  {
+    "requirements": "Web browser",
+    "linkDescription": "Includes .js, .css, .html files",
+    "index": 143,
+    "linkText": "Download Work",
+    "location": "a-dictionary-of-the-revolution.zip",
+    "url": "a-dictionary-of-the-revolution"
+  },
+  {
+    "requirements": "PDF Reader",
+    "linkDescription": "Static sample (30 p., .pdf)",
+    "index": 286,
+    "linkText": "Download Book",
+    "location": "nanogenmo2017-lizadaly-small.pdf",
+    "url": "a-physical-book"
+  },
+  {
+    "requirements": "Web browser",
+    "linkDescription": "Includes .js, .py, .mp3, .csv, .html files",
+    "index": 279,
+    "linkText": "Download Work",
+    "location": "aimisola-dot-net.zip",
+    "url": "aimisola-dot-net"
+  },
+  {
+    "requirements": "Image Viewer",
+    "linkDescription": "Includes Banners, Screenshots, Videos",
+    "index": 80,
+    "linkText": "Download Documentation and Extras",
+    "location": "Aphiddd_banners-screenshots-video.zip",
+    "url": "aphiddd"
+  },
+  {
+    "requirements": "Video Player",
+    "linkDescription": "beauty routine. A burning desire - Video Screen Capture (11:22, .mp4)",
+    "index": 48,
+    "linkText": "Download Video",
+    "location": "beauty routine_TOWP_archival version_1080p.mp4",
+    "url": "beauty-routine"
+  },
+  {
+    "requirements": "Video Player",
+    "linkDescription": "Room #3 - Video Screen Capture (04:50, .mov)",
+    "index": 48,
+    "linkText": "Download Video",
+    "location": "Room3_TOWP_ video documentation_archival version_1080p.mov",
+    "url": "beauty-routine"
+  },
+  {
+    "requirements": "Web browser",
+    "linkDescription": "Includes .html, .css, .js, .txt, .md files",
+    "index": 400,
+    "location": "blackout-poetry-tool.github.io-master.zip",
+    "linkText": "Download Work and Source code",
+    "url": "blackout-poetry-tool"
+  },
+  {
+    "requirements": "Video Player",
+    "linkDescription": "Performance at co-po-jam (07:30, .mp4)",
+    "index": 400,
+    "location": "400-blackout-poetry-tool_jazer.mp4",
+    "linkText": "Download Video",
+    "url": "blackout-poetry-tool"
+  },
+  {
+    "requirements": "PDF Reader",
+    "linkDescription": "Interactive Book (40 p., .pdf)",
+    "index": 79,
+    "location": "bucle.pdf",
+    "linkText": "Download Book",
+    "url": "bucle-archivo-de-ficciones"
+  },
+  {
+    "requirements": "Web browser",
+    "linkDescription": "Includes .js, .mp3, .svg, .json, .html files",
+    "index": 226,
+    "location": "byderhand-pioneer-project.zip",
+    "linkText": "Download Work",
+    "url": "byderhand-pioneer-project"
+  },
+  {
+    "requirements": "Video Player",
+    "linkDescription": "Includes 8 Videos with displays, Screen Capture, projections (.mp4)",
+    "index": 272,
+    "location": "videos.zip",
+    "linkText": "Download Videos",
+    "url": "coal-code"
+  },
+  {
+    "requirements": "Python",
+    "linkDescription": "Jupyter Notebook document (.ipynb)",
+    "index": 95,
+    "linkText": "Download Documentation",
+    "location": "compasses-elc4.ipynb",
+    "url": "compasses"
+  },
+  {
+    "requirements": "PDF Reader",
+    "linkDescription": "Published in 'sync - an ongoing artistic journal in digitally published zines' (28 p., PDF)",
+    "index": 95,
+    "linkText": "Download Book",
+    "location": "190705ap_sync2_27_compasses.pdf",
+    "url": "compasses"
+  },
+  {
+    "requirements": "PDF Reader",
+    "linkDescription": "Annotated source code (5 p., .pdf)",
+    "index": 95,
+    "linkText": "Download Documentation",
+    "location": "compasses-elc4.pdf",
+    "url": "compasses"
+  },
+  {
+    "requirements": "Unix shell, Text editor, Web browser",
+    "linkDescription": "Includes executable (.sh), Book (.txt) and Introduction (.html)",
+    "index": 360,
+    "location": "consequence.zip",
+    "linkText": "Download Work",
+    "url": "consequence"
+  },
+  {
+    "requirements": "PHP and Local web server",
+    "linkDescription": "Includes .php, .js, .json, .html files",
+    "index": 227,
+    "location": "227-desconexao.zip",
+    "linkText": "Download Work and Source code",
+    "url": "desconexao"
+  },
+  {
+    "requirements": "Windows",
+    "linkDescription": "Standalone program, Windows Executable",
+    "index": 278,
+    "location": "ergon_logos_WIN.zip",
+    "linkText": "Download Work (Windows)",
+    "url": "ergon-logos"
+  },
+  {
+    "requirements": "macOS",
+    "linkDescription": "Standalone program, macOS app",
+    "index": 278,
+    "linkText": "Download Work (macOS)",
+    "location": "ergon_logos_OSX.zip",
+    "url": "ergon-logos"
+  },
+  {
+    "requirements": "Adobe Flash Player",
+    "linkDescription": "Shockwave Flash file",
+    "index": 278,
+    "linkText": "Download Work",
+    "location": "ergon_logos_SWF.zip",
+    "url": "ergon-logos"
+  },
+  {
+    "requirements": "Image Viewer",
+    "linkDescription": "Includes OST, Wallpapers, Screensavers",
+    "index": 57,
+    "linkText": "Download Documentation and Extras",
+    "location": "EXTRAS_OST_WALLPAPERS_SCREENSAVERS.zip",
+    "url": "everything-is-going-to-be-ok"
+  },
+  {
+    "requirements": "macOS",
+    "linkDescription": "Standalone Program, macOS App",
+    "index": 57,
+    "linkText": "Download Work (macOS)",
+    "location": "MAC__EVERYTHING_IS_GOING_TO_BE_OK.zip",
+    "url": "everything-is-going-to-be-ok"
+  },
+  {
+    "requirements": "Windows",
+    "linkDescription": "Standalone Program, Windows Executable",
+    "index": 57,
+    "linkText": "Download Work (Windows)",
+    "location": "WINDOWS_EVERYTHING_IS_GOING_TO_BE_OK.zip",
+    "url": "everything-is-going-to-be-ok"
+  },
+  {
+    "requirements": "Video Player",
+    "linkDescription": "Video Screen Capture (12:16, .mp4)",
+    "index": 195,
+    "location": "Explorations_Transversal.mp4",
+    "linkText": "Download Video",
+    "url": "explorations-in-anonymous-history"
+  },
+  {
+    "requirements": "Windows",
+    "linkDescription": "Standalone Program, Windows Executable",
+    "index": 195,
+    "linkText": "Download Work (Windows)",
+    "location": "EXPLORATIONS PC.zip",
+    "url": "explorations-in-anonymous-history"
+  },
+  {
+    "requirements": "JavaScript",
+    "linkDescription": "WebGL for macOS",
+    "index": 195,
+    "location": "EXPLORATIONS WebGL Mac2.zip",
+    "linkText": "Download Work (WebGL, macOS)",
+    "url": "explorations-in-anonymous-history"
+  },
+  {
+    "requirements": "Image Viewer",
+    "linkDescription": "Includes 23 Screen Captures (2122x1596 px, .jpg)",
+    "index": 195,
+    "location": "EXPLOR STILLS.zip",
+    "linkText": "Download Images",
+    "url": "explorations-in-anonymous-history"
+  },
+  {
+    "requirements": "JavaScript",
+    "linkDescription": "WebGL version",
+    "index": 195,
+    "linkText": "Download Work (WebGL)",
+    "location": "EXPLORATIONS WebGL.zip",
+    "url": "explorations-in-anonymous-history"
+  },
+  {
+    "requirements": "3D Software",
+    "linkDescription": "Wavefront 3D Object File",
+    "index": 414,
+    "location": "Esfera.obj.zip",
+    "linkText": "Download 3D Object",
+    "url": "immersive-poetry"
+  },
+  {
+    "requirements": "Video Player",
+    "linkDescription": "Full performance (01:37:38, .mp4)",
+    "index": 255,
+    "location": "Kjell Theory ATOM-R - Full Performance.mp4",
+    "linkText": "Download Video",
+    "url": "kjell-theory"
+  },
+  {
+    "requirements": "Video Player",
+    "linkDescription": "Interaction (00:38, .mp4)",
+    "index": 255,
+    "location": "Kjell Theory ATOM-R - Interaction.mp4",
+    "linkText": "Download Video",
+    "url": "kjell-theory"
+  },
+  {
+    "requirements": "Video Player",
+    "linkDescription": "Screen video capture (09:31, .mp4)",
+    "index": 409,
+    "location": "Lagos at Large Linear colour graded.mp4",
+    "linkText": "Download Video",
+    "url": "lagos-at-large"
+  },
+  {
+    "requirements": "Image Viewer",
+    "linkDescription": "Includes 5 Screen captures (3840x1920 px, .png)",
+    "index": 409,
+    "linkText": "Download Images",
+    "location": "Lagos At Large Stills.zip",
+    "url": "lagos-at-large"
+  },
+  {
+    "requirements": "Image Viewer",
+    "linkDescription": "Includes 14 Screen captures (7200x3571 px, .jpg)",
+    "index": 411,
+    "linkText": "Download Images",
+    "location": "PROJECT STILLS.zip",
+    "url": "le-lac"
+  },
+  {
+    "requirements": "Spark AR, JavaScript",
+    "linkDescription": "Includes .js, .arprojpkg, .arexport files",
+    "index": 402,
+    "linkText": "Download Source code",
+    "location": "leaning-haiku.zip",
+    "url": "leaning-haiku"
+  },
+  {
+    "requirements": "Video Player",
+    "linkDescription": "Film - Legends of Michigami: Riding the Rust Belt (05:26, p.mp4)",
+    "index": 413,
+    "location": "LMRidingtheRustBelt.mp4",
+    "linkText": "Download Video",
+    "url": "legends-of-michigami"
+  },
+  {
+    "requirements": "Video Player",
+    "linkDescription": "Film - Legends of Michigami: Prairie Chants (05:58, p.mp4)",
+    "index": 413,
+    "location": "PrairieChants.mp4",
+    "linkText": "Download Video",
+    "url": "legends-of-michigami"
+  },
+  {
+    "requirements": "Video Player",
+    "linkDescription": "Live performances at co-po-jam (01:24:04, .mp4)",
+    "index": 403,
+    "linkText": "Download Video",
+    "location": "403-livespoke-a-copo-jam-rendition.mp4",
+    "url": "livespoke-a-copo-jam-rendition"
+  },
+  {
+    "requirements": "PDF Reader",
+    "linkDescription": "Liza Gennart, 'Výsledky Vzniku' (in Slovak) (140 p., .pdf)",
+    "index": 187,
+    "linkText": "Download Book",
+    "location": "Liza_Gennart_Vysledky_vzniku.pdf",
+    "url": "liza-gennart"
+  },
+  {
+    "requirements": "Web browser",
+    "linkDescription": "Includes .html, .js, .md files",
+    "index": 401,
+    "linkText": "Download Work and Source code",
+    "location": "Priti-Pandurangan-Meghadutam.zip",
+    "url": "meghadutam"
+  },
+  {
+    "requirements": "PDF Reader",
+    "linkDescription": "Student Capstone 2019 Exegesis Publication (104 p., .pdf)",
+    "index": 401,
+    "location": "exegesis.pdf",
+    "linkText": "Download Documentation",
+    "url": "meghadutam"
+  },
+  {
+    "requirements": "Video Player",
+    "linkDescription": "Video Screen Capture (19:59, .mp4)",
+    "index": 150,
+    "location": "150MEMOR_archivableVersion.mp4",
+    "linkText": "Download Video",
+    "url": "memorias"
+  },
+  {
+    "requirements": "Video Player",
+    "linkDescription": "Video Screen Capture (04:41, .mov)",
+    "index": 150,
+    "linkText": "Download Video",
+    "location": "150MEMOR_demoVersionAndArtworkThatShouldBeDisplayed.mov",
+    "url": "memorias"
+  },
+  {
+    "requirements": "Video Player",
+    "linkDescription": "Video Screen Capture (04:31, .mp4)",
+    "index": 150,
+    "linkText": "Download Video",
+    "location": "150MEMOR_extractAndArtworkThatShouldBeDisplayed.mp4",
+    "url": "memorias"
+  },
+  {
+    "requirements": "Video Player",
+    "linkDescription": "Video Screen Capture (18:08, .mp4)",
+    "index": 252,
+    "location": "my Dear coUntess.mp4",
+    "linkText": "Download Video",
+    "url": "my-dear-countess"
+  },
+  {
+    "requirements": "JavaScript",
+    "linkDescription": "Includes .js file",
+    "index": 338,
+    "linkText": "Download Source code",
+    "location": "no_people.js",
+    "url": "no-people"
+  },
+  {
+    "requirements": "PDF Reader",
+    "linkDescription": "Book (304 p., .pdf)",
+    "index": 338,
+    "linkText": "Download Book",
+    "location": "no_people.pdf",
+    "url": "no-people"
+  },
+  {
+    "linkDescription": "Includes 5 documents with articles, booklets and description of creative process (.pdf)",
+    "index": 63,
+    "location": "NAN_Documentation.zip",
+    "linkText": "Download Documentation",
+    "url": "not_a_number-nan"
+  },
+  {
+    "requirements": "Video Player",
+    "linkDescription": "Includes 8 Videos included in the Work (.mp4)",
+    "index": 63,
+    "location": "NAN_Videos.zip",
+    "linkText": "Download Videos",
+    "url": "not_a_number-nan"
+  },
+  {
+    "requirements": "JavaScript",
+    "linkDescription": "Includes .json, .js files",
+    "index": 323,
+    "location": "OSDCGG-original-sourcecode.zip",
+    "linkText": "Download Source code",
+    "url": "oldschool-dungeon-crawler-gamebook-generator"
+  },
+  {
+    "requirements": "PDF Reader",
+    "linkDescription": "Gamebook 1 'The Infinite Labyrinth' (178 p., .pdf)",
+    "index": 323,
+    "location": "Gamebook-test1.pdf",
+    "linkText": "Download Book",
+    "url": "oldschool-dungeon-crawler-gamebook-generator"
+  },
+  {
+    "requirements": "PDF Reader",
+    "linkDescription": "Gamebook 2 'The Destruction Caverns' (174 p., .pdf)",
+    "index": 323,
+    "linkText": "Download Book",
+    "location": "Gamebook-test2.pdf",
+    "url": "oldschool-dungeon-crawler-gamebook-generator"
+  },
+  {
+    "requirements": "Video Player",
+    "linkDescription": "Film (12:58, .mov)",
+    "index": 132,
+    "linkText": "Download Video",
+    "location": "peaceful dream.mov",
+    "url": "peaceful-dream"
+  },
+  {
+    "requirements": "PDF Reader",
+    "linkDescription": "Book (43 p., .pdf)",
+    "index": 407,
+    "location": "PERMANENTE-OBRA-NEGRA_cc.pdf",
+    "linkText": "Download Documentation",
+    "url": "permanente-obra-negra"
+  },
+  {
+    "requirements": "PHP and Local web server (Read INSTRUCTION TO BACKUP.txt inside)",
+    "linkDescription": "Includes .php, .html, .css, .js files",
+    "index": 407,
+    "location": "permanente-obra-negra_web.zip",
+    "linkText": "Download Work and Source code",
+    "url": "permanente-obra-negra"
+  },
+  {
+    "requirements": "Windows, macOS",
+    "linkDescription": "Standalone Programs, Windows Executable and macOS App",
+    "index": 16,
+    "linkText": "Download Work",
+    "location": "PleaseDontTouchMe33.zip",
+    "url": "please-dont-touch-me"
+  },
+  {
+    "linkDescription": "Includes concept, models, texts; Unity2019; WebVersion (WebGL)",
+    "index": 16,
+    "location": "PleaseDontTouchME_Documentation.zip",
+    "linkText": "Download Documentation and Work",
+    "url": "please-dont-touch-me"
+  },
+  {
+    "requirements": "Windows, Adobe Flash Player",
+    "linkDescription": "Standalone program, Windows Executable, and Shockwave Flash file",
+    "index": 240,
+    "location": "Fajfer_Powieki_final version.zip",
+    "linkText": "Download Work",
+    "url": "powieki"
+  },
+  {
+    "requirements": "UnRAR, Windows",
+    "linkDescription": "Standalone Program, Windows Executable",
+    "index": 74,
+    "linkText": "Download Work (Windows)",
+    "location": "Quarto do Esquecimento.rar",
+    "url": "quarto-do-esquecimento"
+  },
+  {
+    "requirements": "PHP and Local web server (System requirements in readme.txt file inside)",
+    "linkDescription": "Includes .php, .sql, .js files",
+    "index": 406,
+    "linkText": "Download Work and Source code",
+    "location": "retratosvivosdemama.zip",
+    "url": "retratos-vivos-de-mama"
+  },
+  {
+    "requirements": "PDF Reader",
+    "linkDescription": "Includes Vimeo Score and Introduction (6 p., .pdf)",
+    "index": 69,
+    "linkText": "Download Documentation",
+    "location": "Ringing the Changes Vimeo Score 5 changes + Introduction.pdf",
+    "url": "ringing-the-changes"
+  },
+  {
+    "requirements": "Image Viewer",
+    "linkDescription": "Instagram Screencapture (1099x4096 px, .png)",
+    "index": 144,
+    "linkText": "Download Image",
+    "location": "www.instagram.com_robot.sorridente.png",
+    "url": "robot-sorridente"
+  },
+  {
+    "requirements": "Image Viewer",
+    "linkDescription": "Instagram Screencapture (11420x16384 px, .png)",
+    "index": 144,
+    "linkText": "Download Image",
+    "location": "www.instagram.com_robot.sorridente_(highresscreen).png",
+    "url": "robot-sorridente"
+  },
+  {
+    "requirements": "Video Player",
+    "linkDescription": "Movie (00:21, .mp4)",
+    "index": 144,
+    "location": "144-robot-sorridente_balada.mp4",
+    "linkText": "Download Video",
+    "url": "robot-sorridente"
+  },
+  {
+    "requirements": "Video Player",
+    "linkDescription": "Movie (00:05, .mp4)",
+    "index": 144,
+    "linkText": "Download Video",
+    "location": "144-robot-sorridente_q5.mp4",
+    "url": "robot-sorridente"
+  },
+  {
+    "requirements": "Video Player",
+    "linkDescription": "Movie (00:01, .mp4)",
+    "index": 144,
+    "location": "144-robot-sorridente_q42.mp4",
+    "linkText": "Download Video",
+    "url": "robot-sorridente"
+  },
+  {
+    "requirements": "PHP and Local web server",
+    "linkDescription": "Includes .sql, .php files",
+    "index": 375,
+    "linkText": "Download Work and Source code",
+    "location": "Seasonal Labyrinths.zip",
+    "url": "seasonal-labyrinths"
+  },
+  {
+    "requirements": "EPUB Reader",
+    "linkDescription": "Interactive Book version (19 p., .epub)",
+    "index": 375,
+    "linkText": "Download Book",
+    "location": "Labirintos Sazonais - Maurem Kayna.epub",
+    "url": "seasonal-labyrinths"
+  },
+  {
+    "linkDescription": "Includes .pkl, .json, .py files",
+    "index": 141,
+    "location": "alternatingcurrent-master.zip",
+    "linkText": "Download Source code",
+    "url": "sentiment-a-lab-notebook"
+  },
+  {
+    "requirements": "Web browser",
+    "linkDescription": "Includes .js, .mp3, .svg, .json, .html files",
+    "index": 135,
+    "location": "sonar.zip",
+    "linkText": "Download Work and Source code",
+    "url": "sonar"
+  },
+  {
+    "requirements": "Text Editor",
+    "linkDescription": "Subcutanean #43573 (.txt)",
+    "index": 282,
+    "linkText": "Download Book",
+    "location": "subcutanean-43573.txt",
+    "url": "subcutanean"
+  },
+  {
+    "requirements": "Text Editor",
+    "linkDescription": "Subcutanean #43587 (.txt)",
+    "index": 282,
+    "location": "subcutanean-43587.txt",
+    "linkText": "Download Book",
+    "url": "subcutanean"
+  },
+  {
+    "requirements": "PDF Reader",
+    "linkDescription": "Subcutanean Design Posts (PDFs)",
+    "index": 282,
+    "location": "subcutanean-design-posts.zip",
+    "linkText": "Download Documentation",
+    "url": "subcutanean"
+  },
+  {
+    "requirements": "PDF Reader",
+    "linkDescription": "Project Invitation (1 p., .pdf)",
+    "index": 368,
+    "linkText": "Download Documentation",
+    "location": "project invitation.pdf",
+    "url": "the-24-hour-micro-e-lit-project"
+  },
+  {
+    "requirements": "Web browser",
+    "linkDescription": "Includes .js, .css, .html files",
+    "index": 173,
+    "location": "the-durham-poems-sod.zip",
+    "linkText": "Download Work",
+    "url": "the-durham-poems"
+  },
+  {
+    "requirements": "PDF Reader",
+    "linkDescription": "Essay on the Modifications of Clouds', by Luke Howard, 1803, 3rd ed. (Public Domain, 64 p., .pdf)",
+    "index": 55,
+    "linkText": "Download Book",
+    "location": "Howard_modificationofclouds.pdf",
+    "url": "the-gathering-cloud"
+  },
+  {
+    "requirements": "Video Player",
+    "linkDescription": "Performance at ELO2017, Porto (09:50, .mp4)",
+    "index": 55,
+    "location": "The-gathering-cloud_ELO2017.mp4",
+    "linkText": "Download Video",
+    "url": "the-gathering-cloud"
+  },
+  {
+    "requirements": "Node, Angular, Ionic, Python",
+    "linkDescription": "Includes .json, .xml, .js, .py files",
+    "index": 134,
+    "linkText": "Download Source code",
+    "location": "the-infinite-woman.zip",
+    "url": "the-infinite-woman"
+  },
+  {
+    "requirements": "Java",
+    "linkDescription": "Includes .jar, .class files",
+    "index": 167,
+    "location": "the-listeners.zip",
+    "linkText": "Download Source code",
+    "url": "the-listeners"
+  },
+  {
+    "requirements": "PDF Reader",
+    "linkDescription": "Book selections (123 p., .pdf)",
+    "index": 410,
+    "linkText": "Download Book",
+    "location": "TheVineandTheFish_Hook.pdf",
+    "url": "the-vine-and-the-fish"
+  },
+  {
+    "requirements": "PHP and Local web server",
+    "linkDescription": "Includes .sql, .php, .js files",
+    "index": 70,
+    "linkText": "Download Work and Source code",
+    "location": "winnipeg_202006.zip",
+    "url": "the-winnipeg"
+  },
+  {
+    "requirements": "Video Player",
+    "linkDescription": "Includes 11 Videos with Performance readings, Interview, Archives, Exhibitions (.mp4)",
+    "index": 186,
+    "linkText": "Download Videos",
+    "location": "the-wonders-of-lost-trajectories_videos.zip",
+    "url": "the-wonders-of-lost-trajectories"
+  },
+  {
+    "requirements": "Web browser",
+    "linkDescription": "Includes .js, .css, .html files",
+    "index": 217,
+    "linkText": "Download Work",
+    "location": "thoughts-and-prayers-the-game.zip",
+    "url": "thoughts-and-prayers-the-game"
+  },
+  {
+    "requirements": "PDF Reader",
+    "linkDescription": "Selections from Book (20 p., .pdf)",
+    "index": 388,
+    "linkText": "Download Sample poems from the Book",
+    "location": "TravestyGeneratorfinal_selections-ELC4.pdf",
+    "url": "travesty-generator"
+  },
+  {
+    "requirements": "Video Player",
+    "linkDescription": "Full playthrough (01:04:01, .mp4)",
+    "index": 382,
+    "linkText": "Download Video",
+    "location": "382-upgrade-soul.mp4",
+    "url": "upgrade-soul"
+  },
+  {
+    "requirements": "Image Viewer",
+    "linkDescription": "Includes 16 images with Screen captures and Photographs (.jpg, .png)",
+    "index": 274,
+    "linkText": "Download Images",
+    "location": "images_vozpublica.zip",
+    "url": "voz-publica"
+  },
+  {
+    "requirements": "PHP and Local web server",
+    "linkDescription": "Includes .php and .html files",
+    "index": 274,
+    "location": "web_vozPublica.zip",
+    "linkText": "Download Work and Source code",
+    "url": "voz-publica"
+  },
+  {
+    "requirements": "Video Player",
+    "linkDescription": "Film: 'esmuyextraño' (01:15, .mp4)",
+    "index": 392,
+    "linkText": "Download Video",
+    "location": "esmuyextrano.mp4",
+    "url": "we-are-body"
+  },
+  {
+    "requirements": "Video Player",
+    "linkDescription": "Film: 'con dedicatoria al ausente' (01:07, .mp4)",
+    "index": 392,
+    "location": "con dedicatoria al ausente.mp4",
+    "linkText": "Download Video",
+    "url": "we-are-body"
+  },
+  {
+    "requirements": "Video Player",
+    "linkDescription": "Film: 'AUTORRETRATO - diálogo' (01:01, .mp4)",
+    "index": 392,
+    "location": "AUTORRETRATO- dialogo.mp4",
+    "linkText": "Download Video",
+    "url": "we-are-body"
+  },
+  {
+    "requirements": "Video Player",
+    "linkDescription": "Film: 'autorretrato casi igual al anterior' (01:01, .mp4)",
+    "index": 392,
+    "linkText": "Download Video",
+    "location": "autorretrato casi igual al anterior.mp4",
+    "url": "we-are-body"
+  },
+  {
+    "requirements": "BASIC emulator",
+    "linkDescription": "Includes .txt file",
+    "index": 218,
+    "location": "whyDH80.txt",
+    "linkText": "Source code: right-click and 'Save link as...' to download .txt file",
+    "url": "why-are-the-digital-humanities-so-straight"
+  },
+  {
+    "requirements": "Web browser - for best results use Google Chrome",
+    "linkDescription": "Includes .js, .bat, .html, .jar files",
+    "index": 6,
+    "location": "GameFiles.zip",
+    "linkText": "Download Source Code",
+    "url": "writers-are-not-strangers"
+  }
+]

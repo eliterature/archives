@@ -1,0 +1,15 @@
+const { override, addBabelPreset, addBabelPlugin, addWebpackModuleRule } = require('customize-cra');
+
+module.exports = override(
+  addBabelPreset('@babel/preset-react'),
+  addWebpackModuleRule({
+    test: /\.jsx?$/,
+    include: /node_modules\/@yaireo\/tagify\/dist/,
+    use: {
+      loader: 'babel-loader',
+      options: {
+        presets: ['@babel/preset-env', '@babel/preset-react']
+      }
+    }
+  })
+);

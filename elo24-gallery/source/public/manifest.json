@@ -1,0 +1,25 @@
+{
+  "short_name": "ELO24-Unlinked Exbitition",
+  "name": "ELO 2024 (Un)linked: Exhibition collects works centered on the web as a contested platform of community and computational creativity with attention to both dystopian shifts and hopeful futures.",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "images/favicons/android-chrome-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "images/favicons/android-chrome-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
