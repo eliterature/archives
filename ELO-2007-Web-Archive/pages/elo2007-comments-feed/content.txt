@@ -1,0 +1,7 @@
+---
+date: 2009-09-29
+---
+Below is a rendering of the page up to the first error.
+Comments for MITH/ELO Symposium 2007: The Future of Electronic Literature
+http://localhost:8888/elo2007
+May 2-3, University of Maryland, College ParkTue, 29 Sep 2009 18:03:44 +0000http://wordpress.org/?v=2.3

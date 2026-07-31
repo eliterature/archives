@@ -1,0 +1,79 @@
+:root {
+  color-scheme: light dark;
+  --fg: #1a1a2e;
+  --bg: #fff;
+  --accent: #1d6fa5;
+  --muted: #666;
+  --border: #ddd;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: var(--fg);
+  background: var(--bg);
+  line-height: 1.5;
+}
+
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 4rem;
+}
+
+.page-header {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.page-header a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+h1 {
+  font-size: 1.6rem;
+  margin-bottom: .25rem;
+}
+
+.intro {
+  color: var(--muted);
+  margin-bottom: 2rem;
+}
+
+.intro a {
+  color: var(--accent);
+}
+
+.meta {
+  color: var(--muted);
+  font-size: .9rem;
+}
+
+ul.page-list,
+ul.site-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 1.5rem;
+}
+
+ul.page-list li,
+ul.site-list li {
+  padding: .5rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+ul.page-list a,
+ul.site-list a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+ul.page-list a:hover,
+ul.site-list a:hover {
+  text-decoration: underline;
+}

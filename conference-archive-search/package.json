@@ -1,0 +1,13 @@
+{
+  "name": "conference-archive-search",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Static Pagefind-powered search UI over the cached pages committed in the ELO-{year}-Web-Archive folders.",
+  "scripts": {
+    "build": "node build.mjs"
+  },
+  "devDependencies": {
+    "pagefind": "~1.3.0"
+  }
+}

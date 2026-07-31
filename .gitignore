@@ -1,0 +1,10 @@
+# ArchiveBox working collection (large, regenerable — not committed; raw snapshots are
+# packaged and published to GitHub Releases instead, see conference-archive-tools/)
+/archivebox-collection/
+conference-archive-tools/build/
+conference-archive-search/dist/
+
+# Node
+node_modules/
+dist/
+.DS_Store
