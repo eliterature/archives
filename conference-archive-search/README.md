@@ -45,6 +45,24 @@ page. Search results link directly to the cached copy of each page.
 - Re-run `npm run build` any time new folders gain `pages/`/`metadata.json`
   (i.e. after running more of the `conference-archive-tools` capture
   pipeline) to pick up newly archived conferences.
-- Not yet wired up to GitHub Pages — this repo's single Pages deployment slot
-  is already used by `elo2026-exhibition`. For now, `dist/` is meant to be
-  built and served locally, or deployed manually to any static host.
+
+## Deploying to GitHub Pages
+
+Deployed automatically via [`.github/workflows/deploy-search.yml`](../.github/workflows/deploy-search.yml)
+on every push to `main` that touches this folder or any `ELO-*-Web-Archive/`
+folder (or manually via the Actions tab). It builds this site with
+`BASE_PATH=/archives/` (since it's hosted as a project site at
+https://eliterature.github.io/archives/) and deploys `dist/` with
+`actions/deploy-pages`.
+
+All generated links/assets are prefixed with `BASE_PATH` (an env var, default
+`/`), so the same build works both locally (`npx serve dist` at the root) and
+under a GitHub Pages project subpath:
+
+```sh
+BASE_PATH=/archives/ npm run build
+```
+
+This repo's GitHub Pages source must be set to "GitHub Actions" (Settings →
+Pages → Build and deployment → Source) for the workflow's deploy step to
+succeed.

@@ -18,6 +18,12 @@ const REPO_ROOT = path.resolve(SCRIPT_DIR, "..");
 const SEEDS_CSV = path.join(REPO_ROOT, "conference-archive-tools", "seeds.csv");
 const DIST_DIR = path.join(SCRIPT_DIR, "dist");
 
+// Root-relative prefix for every generated link/asset URL, e.g. "/archives/"
+// when hosted as a GitHub Pages project site. Defaults to "/" for local use.
+let BASE_PATH = process.env.BASE_PATH || "/";
+if (!BASE_PATH.startsWith("/")) BASE_PATH = `/${BASE_PATH}`;
+if (!BASE_PATH.endsWith("/")) BASE_PATH = `${BASE_PATH}/`;
+
 const seeds = parseSeedsCsv(SEEDS_CSV);
 
 fs.rmSync(DIST_DIR, { recursive: true, force: true });
@@ -60,7 +66,7 @@ for (const seed of seeds) {
     });
     fs.writeFileSync(path.join(outDir, "index.html"), html);
 
-    pages.push({ slug, title: entry.title, url: entry.url, href: `/works/${seed.folder}/${slug}/` });
+    pages.push({ slug, title: entry.title, url: entry.url, href: `${BASE_PATH}works/${seed.folder}/${slug}/` });
   }
 
   if (pages.length === 0) continue;
@@ -135,7 +141,7 @@ function renderIndexedPage({ year, siteTitle, pageTitle, originalUrl, cleanText 
 <head>
 <meta charset="utf-8">
 <title>${escapeHtml(pageTitle)}</title>
-<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="${BASE_PATH}styles.css">
 </head>
 <body data-pagefind-body
       data-pagefind-meta="title[data-pf-title], year[data-pf-year], site[data-pf-site]"
@@ -143,7 +149,7 @@ function renderIndexedPage({ year, siteTitle, pageTitle, originalUrl, cleanText 
       data-pf-title="${escapeAttr(pageTitle)}"
       data-pf-year="${escapeAttr(year)}"
       data-pf-site="${escapeAttr(siteLabel)}">
-<header class="page-header"><a href="/">&larr; Archive search</a></header>
+<header class="page-header"><a href="${BASE_PATH}">&larr; Archive search</a></header>
 <main class="container">
 <p class="meta">Archived copy from <strong>${escapeHtml(siteLabel)}</strong>.
 Original: <a href="${escapeAttr(originalUrl)}" rel="noopener noreferrer">${escapeHtml(originalUrl)}</a>.
@@ -164,10 +170,10 @@ function renderSiteIndex(seed, pages) {
 <head>
 <meta charset="utf-8">
 <title>${escapeHtml(seed.year)} \u2014 ${escapeHtml(seed.title)} \u2014 ELO Conference Archive</title>
-<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="${BASE_PATH}styles.css">
 </head>
 <body data-pagefind-ignore>
-<header class="page-header"><a href="/">&larr; Archive search</a></header>
+<header class="page-header"><a href="${BASE_PATH}">&larr; Archive search</a></header>
 <main class="container">
 <h1>${escapeHtml(seed.year)} \u2014 ${escapeHtml(seed.title)}</h1>
 <p class="meta">${escapeHtml(seed.location || "")}</p>
@@ -183,7 +189,7 @@ function renderWorksIndex(sites) {
   const rows = sites
     .map(
       (s) =>
-        `<li><a href="/works/${escapeAttr(s.folder)}/">${escapeHtml(s.year)} \u2014 ${escapeHtml(s.title)}</a> <span class="meta">(${s.pages.length} page${s.pages.length === 1 ? "" : "s"})</span></li>`
+        `<li><a href="${BASE_PATH}works/${escapeAttr(s.folder)}/">${escapeHtml(s.year)} \u2014 ${escapeHtml(s.title)}</a> <span class="meta">(${s.pages.length} page${s.pages.length === 1 ? "" : "s"})</span></li>`
     )
     .join("\n");
   return `<!doctype html>
@@ -191,10 +197,10 @@ function renderWorksIndex(sites) {
 <head>
 <meta charset="utf-8">
 <title>Browse all conferences \u2014 ELO Conference Archive</title>
-<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="${BASE_PATH}styles.css">
 </head>
 <body data-pagefind-ignore>
-<header class="page-header"><a href="/">&larr; Archive search</a></header>
+<header class="page-header"><a href="${BASE_PATH}">&larr; Archive search</a></header>
 <main class="container">
 <h1>Browse all conferences</h1>
 <ul class="site-list">
@@ -212,9 +218,9 @@ function renderSearchPage() {
 <meta charset="utf-8">
 <title>ELO Conference Archive Search</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="/styles.css">
-<link href="/pagefind/pagefind-ui.css" rel="stylesheet">
-<script src="/pagefind/pagefind-ui.js"></script>
+<link rel="stylesheet" href="${BASE_PATH}styles.css">
+<link href="${BASE_PATH}pagefind/pagefind-ui.css" rel="stylesheet">
+<script src="${BASE_PATH}pagefind/pagefind-ui.js"></script>
 </head>
 <body>
 <main class="container">
@@ -223,7 +229,7 @@ function renderSearchPage() {
   Full-text search across every cached page captured from past
   <a href="https://conference.eliterature.org/archive/index.html" rel="noopener noreferrer">Electronic Literature Organization conference</a>
   websites. Results link to the archived copy of each page.
-  See the <a href="/works/">full list of archived conferences</a>.
+  See the <a href="${BASE_PATH}works/">full list of archived conferences</a>.
 </p>
 <div id="search"></div>
 </main>
@@ -234,6 +240,8 @@ function renderSearchPage() {
       showSubResults: true,
       showImages: false,
       excerptLength: 20,
+      bundlePath: "${BASE_PATH}pagefind/",
+      baseUrl: "${BASE_PATH}",
     });
   });
 </script>
