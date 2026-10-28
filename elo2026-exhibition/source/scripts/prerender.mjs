@@ -58,14 +58,7 @@ async function main() {
   console.log(`Pre-rendering ${routes.length} routes…`);
 
   for (const route of routes) {
-    let html;
-
-    try {
-      ({ html } = render(route));
-    } catch (err) {
-      console.warn(`  [skip] ${route} — render error: ${err.message}`);
-      continue;
-    }
+    const { html } = render(route);
 
     const { headMarkup, bodyMarkup } = splitHeadAndBody(html);
 
@@ -95,4 +88,3 @@ main().catch((err) => {
   console.error('Pre-rendering failed:', err);
   process.exit(1);
 });
-

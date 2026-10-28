@@ -11,6 +11,7 @@ import { copyrights } from "../images/images"
 import { AppContext, IContext, Layout } from "./HomeScreen"
 //import worksDownload from '../json/worksDownload.json'
 import {useNavigate, useSearchParams} from 'react-router-dom'
+import { traversalVideoUrl } from '../utils/traversalVideoUrl'
 const renderTooltip = (props: any) => (
   <Tooltip id="button-tooltip" {...props}>
     Toggle increased contrast mode
@@ -54,8 +55,8 @@ export default function Work({ work, setDarkMode } : { work: any, setDarkMode: a
           <h2 className="center">Archive Recording</h2>
           <hr />
           <video style={{ "textAlign": "center" }} controls width="100%">
-            <source src={`${process.env.PUBLIC_URL}/video/webm/ELO-ID${work.id}-WEBM.webm`} type="video/webm" />
-            <source src={`${process.env.PUBLIC_URL}/video/mp4/ELO-ID${work.id}-MP4.mp4`} type="video/mp4" />
+            <source src={traversalVideoUrl(work.id, "webm")} type="video/webm" />
+            <source src={traversalVideoUrl(work.id, "mp4")} type="video/mp4" />
           </video>
         </p>
       );
@@ -193,7 +194,7 @@ export default function Work({ work, setDarkMode } : { work: any, setDarkMode: a
                 </div>
               </OverlayTrigger>
             </div>
-            <div className="returnButton"><a href="/" onClick={e => { e.preventDefault(); e.stopPropagation(); navigate("/", { replace: true }) }}>Return</a></div>
+            <div className="returnButton"><a href={`${process.env.PUBLIC_URL}/`} onClick={e => { e.preventDefault(); e.stopPropagation(); navigate("/", { replace: true }) }}>Return</a></div>
           </div>
         </Layout.Slot>
       </Layout>

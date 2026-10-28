@@ -70,15 +70,26 @@ Individual exhibited works remain under the rights of their respective creators.
   the real binaries live in this repository's GitHub Release
   (`elo24-gallery-media`), and only lightweight LFS pointer stubs remain in the
   source tree as a manifest of paths, SHA-256 hashes, and sizes.
-- To run the app from source, restore the media binaries from the
-  `elo24-gallery-media` release into their original paths (reverse the `__` → `/`
-  naming), then `npm install` and `npm run build` (Node + npm required). A working
-  `.env` with valid deploy/publish credentials must be re-supplied for the FTP
-  deploy script.
+- The archived gallery is hosted at https://eliterature.github.io/archives/elo24/.
+  Traversal players use the release assets directly, including the upstream
+  `ELO-ID51-MP4.webm` naming exception. No media download or FTP credentials are
+  needed to build or publish this version.
+- From `source/`, run `PUPPETEER_SKIP_DOWNLOAD=true npm ci` and `npm run build`.
+  The archived invalid, unused `-` dependency has been removed so current npm can
+  install the locked dependencies. The `homepage` field sets the archive base
+  URL; `PUBLIC_URL=/archives/elo24` can also be supplied explicitly.
+- The repository-level Pages workflow assembles the build with static entry
+  points for every gallery route. Standalone `npm run build` does not generate
+  these entry points; see [`../scripts/prepare-exhibitions.mjs`](../scripts/prepare-exhibitions.mjs).
+- Interactive-work "Archive" links still point to the original UCF-hosted works.
+  Their runnable binaries are not restored into Pages. To run those preserved
+  copies separately, restore their media from the release (reverse `__` to `/`);
+  LFS stubs are excluded from the published Pages artifact.
 - Some non-LFS binary assets (`.wav` audio, a `.mov`, a `.wasm`, a `.zip`) are
   retained directly in the source tree; all are under GitHub's 100 MB per-file limit.
 
 ## Related Links
+- GitHub Pages archive: https://eliterature.github.io/archives/elo24/
 - Live production site (ELO 2024 exhibition): https://projects.cah.ucf.edu/mediaartsexhibits/elo2024/
 - Many Realities Studio: https://github.com/many-realities-studio
 - Electronic Literature Organization: https://eliterature.org

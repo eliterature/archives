@@ -34,8 +34,24 @@ contains cached pages and a `metadata.json` manifest; see
 
 ### Other Projects
 
-- [`elo2026-exhibition/`](elo2026-exhibition/) — source for the ELO 2026 exhibition site
-- [`elo24-gallery/`](elo24-gallery/) — source for the ELO 2024 gallery site
+- [`elo2026-exhibition/`](elo2026-exhibition/) — source for the ELO 2026 exhibition site;
+  [browse the archived exhibition](https://eliterature.github.io/archives/elo26/)
+- [`elo24-gallery/`](elo24-gallery/) — source for the ELO 2024 gallery site;
+  [browse the archived gallery](https://eliterature.github.io/archives/elo24/)
+
+### GitHub Pages deployment
+
+The [Pages workflow](.github/workflows/deploy-search.yml) publishes the conference
+search at `/archives/` alongside the gallery at `/archives/elo24/` and exhibition
+at `/archives/elo26/`. A push to `main` affecting any of these sites, or a manual
+workflow dispatch, rebuilds and deploys all three together.
+
+Traversal video players link directly to the media assets in this repository's
+GitHub Releases; multi-gigabyte videos are not copied into the size-limited Pages
+artifact. [The assembly script](scripts/prepare-exhibitions.mjs) adds ELO24 route
+entry points, checks ELO26 pre-rendered routes, removes LFS pointer stubs and
+Apache-only configuration from the deployed copy, and checks the 1 GB site limit.
+Direct work links and refreshes do not require server-side URL rewrites.
 
 ## How to Contribute
 

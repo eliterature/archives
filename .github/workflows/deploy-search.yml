@@ -1,6 +1,5 @@
-# Build the conference-archive-search static site and deploy it to
-# GitHub Pages (https://eliterature.github.io/archives/).
-name: Deploy conference archive search to Pages
+# Publish the search index and both exhibition sites as one Pages artifact.
+name: Deploy archives to Pages
 
 on:
   push:
@@ -8,6 +7,9 @@ on:
     paths:
       - "conference-archive-search/**"
       - "ELO-*-Web-Archive/**"
+      - "elo24-gallery/source/**"
+      - "elo2026-exhibition/source/**"
+      - "scripts/prepare-exhibitions*"
       - ".github/workflows/deploy-search.yml"
   workflow_dispatch:
 
@@ -31,7 +33,10 @@ jobs:
         with:
           node-version: "22"
           cache: "npm"
-          cache-dependency-path: conference-archive-search/package-lock.json
+          cache-dependency-path: |
+            conference-archive-search/package-lock.json
+            elo24-gallery/source/package-lock.json
+            elo2026-exhibition/source/package-lock.json
       - name: Install dependencies
         working-directory: conference-archive-search
         run: npm ci
@@ -42,6 +47,34 @@ jobs:
         run: npm run build
         env:
           BASE_PATH: /archives/
+      - name: Install ELO24 dependencies
+        working-directory: elo24-gallery/source
+        run: npm ci
+        env:
+          PUPPETEER_SKIP_DOWNLOAD: "true"
+          PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: "true"
+      - name: Test and build ELO24
+        working-directory: elo24-gallery/source
+        run: |
+          npm test -- --watchAll=false --runInBand --testPathPattern=traversalVideoUrl
+          npm run build
+        env:
+          PUBLIC_URL: /archives/elo24
+      - name: Install ELO26 dependencies
+        working-directory: elo2026-exhibition/source
+        run: npm ci
+      - name: Test and build ELO26
+        working-directory: elo2026-exhibition/source
+        run: |
+          npx vitest run tests/assetUrl.test.ts tests/entryServer.test.tsx
+          npm run type-check
+          npm run build:full
+        env:
+          VITE_APP_BASE_PATH: /archives/elo26/
+      - name: Assemble exhibition sites
+        run: |
+          node --test scripts/prepare-exhibitions.test.mjs
+          node scripts/prepare-exhibitions.mjs
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:

@@ -1,6 +1,5 @@
 import { renderToString } from "react-dom/server";
-import { StaticRouter } from "react-router";
-import { Route, Routes, Navigate } from "react-router-dom";
+import { StaticRouter, Route, Routes, Navigate } from "react-router-dom";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { ThemeProvider } from "./context/ThemeContext";
 import aboutJson from "./json/about.json";
@@ -112,4 +111,3 @@ export function render(
 
   return { html };
 }
-

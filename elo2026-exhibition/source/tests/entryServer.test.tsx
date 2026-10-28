@@ -1,11 +1,5 @@
 import { describe, it, expect, vi } from "vitest";
 
-// react-router-dom v7 is a thin re-export of react-router. entry-server mixes
-// StaticRouter (react-router) with Routes/Route/Navigate (react-router-dom);
-// under vitest those resolve to separate context instances, breaking the SSR
-// render. Aliasing react-router-dom to react-router unifies the context.
-vi.mock("react-router-dom", async () => await vi.importActual("react-router"));
-
 // Keep the citation engine out of the per-work SSR render (covered elsewhere).
 vi.mock("../src/components/citation/CitationWidget", () => ({
   CitationWidget: () => null,

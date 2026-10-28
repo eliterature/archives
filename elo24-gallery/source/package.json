@@ -2,9 +2,8 @@
   "name": "elc4-react",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://projects.cah.ucf.edu/mediaartsexhibits/elo2024/",
+  "homepage": "https://eliterature.github.io/archives/elo24/",
   "dependencies": {
-    "-": "^0.0.1",
     "@citation-js/core": "^0.6.1",
     "@citation-js/plugin-bibtex": "^0.6.1",
     "@citation-js/plugin-csl": "^0.6.1",

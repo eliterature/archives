@@ -632,7 +632,7 @@ const Index = () => {
   let providerValue = { works, curWorks, keywordSets, searchSets: sSets, darkMode, search, setSearch, setDarkMode, keywordFrequency }
   return (
     <AppContext.Provider value={providerValue}>
-      <BrowserRouter basename="/mediaartsexhibits/elo2024">
+      <BrowserRouter basename={new URL(process.env.PUBLIC_URL || "/", window.location.origin).pathname.replace(/\/$/, "")}>
         <Routes>
           <Route path={"/"} element={<HomeScreen />} />
           <Route path={"/index"} element={<IndexScreen />} />

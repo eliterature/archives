@@ -73,10 +73,19 @@ their respective creators.
   `*.webm`). This archive intentionally does **not** use Git LFS: the real video
   binaries live in this repository's GitHub Release (`elo2026-exhibition-media`),
   and only lightweight LFS pointer stubs remain in the source tree as a manifest.
-- To run the app from source you must supply the video binaries. Download them
-  from the `elo2026-exhibition-media` release (or the upstream `media-v1` release)
-  and place them in `source/public/videos/mp4/`, then `npm install` and
-  `npm run build:full` (Node + npm required).
+- The archived exhibition is hosted at https://eliterature.github.io/archives/elo26/.
+  Traversal players resolve `/videos/mp4/` metadata paths directly to this
+  repository's `elo2026-exhibition-media` release. Local images continue to use
+  the configured application base path. No video download is needed.
+- From `source/`, run `npm ci`, then
+  `VITE_APP_BASE_PATH=/archives/elo26/ npm run build:full`.
+  The repository-level Pages workflow builds and publishes the pre-rendered
+  routes alongside the ELO24 gallery and existing conference archive search.
+  It removes LFS pointer stubs and Apache-only configuration from the deployed
+  copy; source preservation manifests are unchanged.
+- Server rendering imports the router and route components from the same
+  `react-router-dom` package so their contexts match. Pre-render errors fail the
+  build rather than silently skipping routes.
 - The deployable `elo2026-site-v0.11.0.zip` is built for the base path
   `/mediaartsexhibits/elo2026/`; to host it elsewhere it must be rebuilt with a
   different `VITE_APP_BASE_PATH`, or the `.htaccess` and internal links adjusted.
@@ -86,6 +95,7 @@ their respective creators.
   `source/schema/elms-schema.json` for future validation or type generation.
 
 ## Related Links
+- GitHub Pages archive: https://eliterature.github.io/archives/elo26/
 - Live production site: https://projects.cah.ucf.edu/mediaartsexhibits/elo2026
 - GitHub Pages preview: https://videlais.github.io/elo2026-exhibition-preview/
 - Extended eLectronic Metadata Schema (ELMS), The NEXT: https://the-next.org/elms
